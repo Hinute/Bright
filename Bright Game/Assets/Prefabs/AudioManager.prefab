@@ -43,5 +43,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 353d9443fabbc4943a7f2a694bfaefaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
-  playlist: []
+  sounds:
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+    loop: 0
+    loopToAudio: 
+    valid: 0
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+    loop: 0
+    loopToAudio: 
+    valid: 0
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+    loop: 0
+    loopToAudio: 
+    valid: 0
+  playlist:
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+    loop: 0
+    loopToAudio: 
+    valid: 0
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+    loop: 0
+    loopToAudio: 
+    valid: 0
