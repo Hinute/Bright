@@ -41,8 +41,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 353d9443fabbc4943a7f2a694bfaefaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   sounds:
   - name: Die
     clip: {fileID: 8300000, guid: 5af9b2ba392721c40a1daddfbba0b2a1, type: 3}
@@ -50,7 +50,7 @@ MonoBehaviour:
     pitch: 0
     source: {fileID: 0}
     loop: 0
-    loopToAudio: 
+    loopToAudio:
     valid: 0
   - name: Win
     clip: {fileID: 8300000, guid: f37933a1ef59ece4682aed90659cd195, type: 3}
@@ -58,7 +58,7 @@ MonoBehaviour:
     pitch: 0
     source: {fileID: 0}
     loop: 0
-    loopToAudio: 
+    loopToAudio:
     valid: 0
   - name: Eat
     clip: {fileID: 8300000, guid: ad4e2ed147d2a9c42a39e9357090d7eb, type: 3}
@@ -66,7 +66,7 @@ MonoBehaviour:
     pitch: 0
     source: {fileID: 0}
     loop: 0
-    loopToAudio: 
+    loopToAudio:
     valid: 0
   playlist:
   - name: Upbeat
@@ -75,5 +75,5 @@ MonoBehaviour:
     pitch: 0
     source: {fileID: 0}
     loop: 1
-    loopToAudio: 
+    loopToAudio:
     valid: 0
