@@ -7,6 +7,8 @@ public class FoodController : MonoBehaviour {
     public GameObject food;
     public int sortingOrder = 0;
     public static FoodController instance;
+    public int foodXCoord = 0;
+    public int foodYCoord = 1;
 
     private void Awake() {
         if (instance == null) { // if the instance var is null this is first AudioManager
@@ -19,13 +21,11 @@ public class FoodController : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        SpawnFood(2, 0);
-        //SpawnFood(1, 1);
+        SpawnFood();
     }
 
-    public void SpawnFood(int xCoord, int yCoord) {
-        Instantiate(food, new Vector2(xCoord, yCoord), Quaternion.identity);
-        food.GetComponent<SpriteRenderer>().sortingOrder = sortingOrder;
+    public void SpawnFood() {
+        Instantiate(food, new Vector2(foodXCoord, foodYCoord), Quaternion.identity);
     }
 
     // Update is called once per frame

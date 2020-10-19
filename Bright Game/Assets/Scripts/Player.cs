@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     public static float speed = 1f;
     public static Player player;
 
+
     void Awake() {
         if (player == null) {
             player = this;
@@ -40,10 +41,12 @@ public class Player : MonoBehaviour {
         Debug.Log(other.gameObject.ToString());
         if (other.gameObject.ToString().Contains("Food")) {
             Debug.Log("Success");
-            this.GetComponentInChildren<Light2D>().pointLightOuterRadius += 1;
-            //Destroy(other.gameObject);
+            this.GetComponentInChildren<Light2D>().pointLightOuterRadius += .3f;
         }
-        FoodController.instance.SpawnFood(0,2);
+        other.gameObject.SetActive(false);
+        FoodController.instance.foodXCoord += 1;
+        FoodController.instance.foodYCoord += 1;
+        FoodController.instance.SpawnFood();
 
     }
 
