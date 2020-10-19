@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour {
+    // TODO: @daria @emily: Need to add Bright game logo to the top of the menu
+    // ideally, we'll want it to animate in and the buttons to fade in
+
     public GameObject mainMenu;
     public GameObject optionsMenu;
 
@@ -18,7 +21,6 @@ public class MainMenuController : MonoBehaviour {
 
     public void PlayGame() {
         // Loads the next scene in the build settings after this one
-        // TODO: currently set to go to Will'sSandbox, need to change to the proper game scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
