@@ -56,6 +56,8 @@ public class AudioManager : MonoBehaviour {
     }
     public void PlaySound(string name) {
         // here we get the Sound from our array with the name passed in the methods parameters
+        Debug.Log("AudioManager: Trying to play sound: " + name);
+
         Sound s = FindAudioByName(sounds, name);
         if (!s.valid) {
             Debug.LogError("Unable to play sound " + name);
@@ -65,6 +67,8 @@ public class AudioManager : MonoBehaviour {
     }
 
     public void PlayMusic(string musicName = "null") {
+        Debug.Log("AudioManager: Trying to play music: " + musicName);
+
         if (shouldPlayMusic == false) {
             shouldPlayMusic = true;
 
@@ -83,12 +87,16 @@ public class AudioManager : MonoBehaviour {
 
             playlist[currentPlayingIndex].source.volume = playlist[0].volume * mvol; // set the volume
             playlist[currentPlayingIndex].source.Play(); // play it
+
+            Debug.Log("AudioManager: Playing Music: " + getSongName());
         }
 
     }
 
     // stop music
     public void StopMusic() {
+        Debug.Log("AudioManager: Stopping Music: " + getSongName());
+
         if (shouldPlayMusic == true) {
             shouldPlayMusic = false;
             playlist[currentPlayingIndex].source.Stop();
@@ -101,6 +109,8 @@ public class AudioManager : MonoBehaviour {
 
     // pause music
     public void PauseMusic() {
+        Debug.Log("AudioManager: Pausing Music: " + getSongName());
+
         if (shouldPlayMusic == true) {
             playlist[currentPlayingIndex].source.Pause();
             shouldPlayMusic = false;
@@ -109,6 +119,8 @@ public class AudioManager : MonoBehaviour {
 
     // resume music from where you left off
     public void ResumeMusic() {
+        Debug.Log("AudioManager: Resuming Music: " + getSongName());
+
         if (shouldPlayMusic == false) {
             playlist[currentPlayingIndex].source.UnPause();
             shouldPlayMusic = true;
