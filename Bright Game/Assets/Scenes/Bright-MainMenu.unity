@@ -301,12 +301,12 @@ PrefabInstance:
     - target: {fileID: 6799527137122570687, guid: d3f3c1abe70b44c4595fd839b3bd1e09,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6799527137122570687, guid: d3f3c1abe70b44c4595fd839b3bd1e09,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6799527137122570687, guid: d3f3c1abe70b44c4595fd839b3bd1e09,
         type: 3}
@@ -317,11 +317,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 638217633}
+      objectReference: {fileID: 1112598123}
     - target: {fileID: 6799527137122570687, guid: d3f3c1abe70b44c4595fd839b3bd1e09,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
+      value: ToMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 6799527137122570687, guid: d3f3c1abe70b44c4595fd839b3bd1e09,
         type: 3}
@@ -341,7 +341,7 @@ PrefabInstance:
     - target: {fileID: 6799527137122570687, guid: d3f3c1abe70b44c4595fd839b3bd1e09,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6799527137122570687, guid: d3f3c1abe70b44c4595fd839b3bd1e09,
         type: 3}
@@ -614,12 +614,12 @@ PrefabInstance:
     - target: {fileID: 6799527137122570687, guid: d3f3c1abe70b44c4595fd839b3bd1e09,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6799527137122570687, guid: d3f3c1abe70b44c4595fd839b3bd1e09,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6799527137122570687, guid: d3f3c1abe70b44c4595fd839b3bd1e09,
         type: 3}
@@ -630,11 +630,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 991620938}
+      objectReference: {fileID: 1112598123}
     - target: {fileID: 6799527137122570687, guid: d3f3c1abe70b44c4595fd839b3bd1e09,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
+      value: ToOptionsMenu
       objectReference: {fileID: 0}
     - target: {fileID: 6799527137122570687, guid: d3f3c1abe70b44c4595fd839b3bd1e09,
         type: 3}
@@ -644,7 +644,7 @@ PrefabInstance:
     - target: {fileID: 6799527137122570687, guid: d3f3c1abe70b44c4595fd839b3bd1e09,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6799527137122570687, guid: d3f3c1abe70b44c4595fd839b3bd1e09,
         type: 3}
@@ -912,6 +912,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5646ab6d882e4860b41067cca4625ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenu: {fileID: 0}
+  optionsMenu: {fileID: 0}
 --- !u!1001 &790810763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1383,6 +1385,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5646ab6d882e4860b41067cca4625ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenu: {fileID: 638217633}
+  optionsMenu: {fileID: 991620938}
 --- !u!4 &1112598124
 Transform:
   m_ObjectHideFlags: 0

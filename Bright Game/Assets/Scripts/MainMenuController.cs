@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour {
-    // Start is called before the first frame update
+    public GameObject mainMenu;
+    public GameObject optionsMenu;
+
     void Start() {
         Debug.Log("MainMenuController: Started");
         AudioManager.instance.PlayMusic("Upbeat");
     }
 
-    // Update is called once per frame
     void Update() {
 
     }
@@ -22,11 +23,13 @@ public class MainMenuController : MonoBehaviour {
     }
 
     public void ToOptionsMenu() {
-
+        mainMenu.SetActive(false);
+        optionsMenu.SetActive(true);
     }
 
     public void ToMainMenu() {
-
+        optionsMenu.SetActive(false);
+        mainMenu.SetActive(true);
     }
 
     public void ExitGame() {
