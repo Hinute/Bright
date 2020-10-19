@@ -9,6 +9,7 @@ public class FoodController : MonoBehaviour {
     public static FoodController instance;
     public int foodXCoord = 0;
     public int foodYCoord = 1;
+    private Vector2 screenBounds;
 
     private void Awake() {
         if (instance == null) { // if the instance var is null this is first AudioManager
@@ -21,11 +22,13 @@ public class FoodController : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
         SpawnFood();
     }
 
     public void SpawnFood() {
-        Instantiate(food, new Vector2(foodXCoord, foodYCoord), Quaternion.identity);
+        Instantiate(food);
+        food.transform.position = new Vector2((Random.Range(-screenBounds.x,screenBounds.x)), (Random.Range(-screenBounds.y,screenBounds.y)));
     }
 
     // Update is called once per frame
