@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 263123c27d4840e4580cc529461c57b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  food: {fileID: 1189003613650878919, guid: 752e450bdfc283e42ab4918abdf56e46, type: 3}
+  food: {fileID: 4666513215040099112, guid: 742c9877b98e7ae48a9788d1c8ee3838, type: 3}
   sortingOrder: 0
   foodXCoord: 0
   foodYCoord: 1
