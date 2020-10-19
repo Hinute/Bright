@@ -7,8 +7,6 @@ public class FoodController : MonoBehaviour {
     public GameObject food;
     public int sortingOrder = 0;
     public static FoodController instance;
-    public int foodXCoord = 0;
-    public int foodYCoord = 1;
     private Vector2 screenBounds;
 
     private void Awake() {
@@ -28,11 +26,6 @@ public class FoodController : MonoBehaviour {
 
     public void SpawnFood() {
         Instantiate(food);
-        food.transform.position = new Vector2((Random.Range(-screenBounds.x,screenBounds.x)), (Random.Range(-screenBounds.y,screenBounds.y)));
-    }
-
-    // Update is called once per frame
-    void Update() {
-
+        food.transform.position = new Vector2((Random.Range(-screenBounds.x, screenBounds.x)), (Random.Range(-screenBounds.y, screenBounds.y)));
     }
 }
