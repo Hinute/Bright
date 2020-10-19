@@ -28,5 +28,8 @@ public class MainMenuController : MonoBehaviour {
 
     }
 
-    public void ExitGame() { }
+    public void ExitGame() {
+        Debug.Log("QUIT: Bye bye!");
+        Application.Quit();
+    }
 }
