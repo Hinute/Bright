@@ -45,8 +45,6 @@ public class Player : MonoBehaviour {
         }
         other.gameObject.SetActive(false);
         Destroy(other.gameObject);
-        FoodController.instance.foodXCoord += 1;
-        FoodController.instance.foodYCoord += 1;
         FoodController.instance.SpawnFood();
 
     }
