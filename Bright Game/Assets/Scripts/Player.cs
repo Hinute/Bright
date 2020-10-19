@@ -22,9 +22,9 @@ public class Player : MonoBehaviour {
     }
 
     /*
-    * Checks if the player should move, and gives it some movement if it should, with some acceleration
-    * at the beginning. If player should stop moving, resets the speed so acceleration can start fresh.
-    */
+     * Checks if the player should move, and gives it some movement if it should, with some acceleration
+     * at the beginning. If player should stop moving, resets the speed so acceleration can start fresh.
+     */
     void checkMovement() {
         var move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         transform.position += (Vector3)move * speed * Time.deltaTime;
@@ -36,7 +36,15 @@ public class Player : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        this.GetComponentInChildren<Light2D>().pointLightOuterRadius = 4;
+        Debug.Log("collision");
+        Debug.Log(other.gameObject.ToString());
+        if (other.gameObject.ToString().Contains("Food")) {
+            Debug.Log("Success");
+            this.GetComponentInChildren<Light2D>().pointLightOuterRadius += 1;
+            //Destroy(other.gameObject);
+        }
+        FoodController.instance.SpawnFood(0,2);
+
     }
 
 }
