@@ -44,6 +44,7 @@ public class Player : MonoBehaviour {
             this.GetComponentInChildren<Light2D>().pointLightOuterRadius += .3f;
         }
         other.gameObject.SetActive(false);
+        Destroy(other.gameObject);
         FoodController.instance.foodXCoord += 1;
         FoodController.instance.foodYCoord += 1;
         FoodController.instance.SpawnFood();
