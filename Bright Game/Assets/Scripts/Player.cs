@@ -1,0 +1,42 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
+
+public class Player : MonoBehaviour {
+
+    public static float speed = 1f;
+    public static Player player;
+
+    void Awake() {
+        if (player == null) {
+            player = this;
+        }
+    }
+
+    void Start() { }
+
+    // Update is called once per frame
+    void Update() {
+        checkMovement();
+    }
+
+    /*
+    * Checks if the player should move, and gives it some movement if it should, with some acceleration
+    * at the beginning. If player should stop moving, resets the speed so acceleration can start fresh.
+    */
+    void checkMovement() {
+        var move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        transform.position += (Vector3)move * speed * Time.deltaTime;
+        if (move != Vector2.zero && speed < 2f) {
+            speed += .01f;
+        } else if (move == Vector2.zero) {
+            speed = 1;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other) {
+        this.GetComponentInChildren<Light2D>().pointLightOuterRadius = 4;
+    }
+
+}
