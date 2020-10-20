@@ -75,7 +75,8 @@ public class Player : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log(other.gameObject.ToString());
+        Debug.Log("TRIGGERED Player: " + other.gameObject.ToString());
+
         if (other.gameObject.ToString().Contains("Food")) {
             float foodLightRadius = other.gameObject.GetComponentInChildren<Light2D>().pointLightOuterRadius;
             if (newTargetLightRadius == 0) {
@@ -84,6 +85,31 @@ public class Player : MonoBehaviour {
                 newTargetLightRadius = newTargetLightRadius + foodLightRadius / 5;
             }
             FoodController.instance.DestroyObject(other.gameObject);
+        }
+
+        if (other.gameObject.tag == "World") {
+            Debug.Log("BUMP! I hit a wall!");
+
+            // TODO: need to add wall bump sound
+            // AudioManager.instance.PlaySound("Thud");
+
+            var xPosition = transform.position.x;
+            var yPosition = transform.position.y;
+            // Any lower and player can eventually go through the wall
+            var wallBufferDistance = .3f;
+
+            // Bounce off the wall a bit to prevent you from going through
+            if (xPosition >= 0) {
+                xPosition -= wallBufferDistance;
+            } else {
+                xPosition += wallBufferDistance;
+            }
+            if (yPosition >= 0) {
+                yPosition -= wallBufferDistance;
+            } else {
+                yPosition += wallBufferDistance;
+            }
+            transform.position = (Vector3)(new Vector2(xPosition, yPosition));
         }
 
     }
