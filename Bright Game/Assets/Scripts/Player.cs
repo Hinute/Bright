@@ -21,9 +21,7 @@ public class Player : MonoBehaviour {
         }
     }
 
-    void Start() { 
-        isDead = false;
-    }
+    void Start() { }
 
     // Update is called once per frame
     void Update() {
@@ -92,11 +90,8 @@ public class Player : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-<<<<<<< HEAD
         Debug.Log("TRIGGERED Player: " + other.gameObject.ToString());
 
-=======
->>>>>>> Player dies and max scores displays, added to Will's Sandbox
         if (other.gameObject.ToString().Contains("Food")) {
             float foodLightRadius = other.gameObject.GetComponentInChildren<Light2D>().pointLightOuterRadius;
             if (newTargetLightRadius == 0) {
