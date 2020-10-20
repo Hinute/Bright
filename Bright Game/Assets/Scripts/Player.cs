@@ -30,7 +30,6 @@ public class Player : MonoBehaviour {
             newTargetLightRadius = 0f;
         }
         decreasePlayerLight();
-        Debug.Log("Player light radius: " + playerLight.pointLightOuterRadius);
     }
 
     /*
@@ -76,11 +75,9 @@ public class Player : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("collision");
         Debug.Log(other.gameObject.ToString());
         if (other.gameObject.ToString().Contains("Food")) {
             float foodLightRadius = other.gameObject.GetComponentInChildren<Light2D>().pointLightOuterRadius;
-            Debug.Log("Success");
             if (newTargetLightRadius == 0) {
                 newTargetLightRadius = playerLight.pointLightOuterRadius + foodLightRadius / 5;
             } else {
@@ -88,9 +85,6 @@ public class Player : MonoBehaviour {
             }
             FoodController.instance.DestroyObject(other.gameObject);
         }
-        //other.gameObject.SetActive(false);
-        //Destroy(other.gameObject);
-        //FoodController.instance.SpawnFood();
 
     }
 
