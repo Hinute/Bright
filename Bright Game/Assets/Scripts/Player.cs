@@ -5,11 +5,12 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class Player : MonoBehaviour {
 
+    public static float maxSpeed = 2f;
     public static float speed = 1f;
     public static Player player;
     public Light2D playerLight;
     private float lightDecreaseSpeed = .0001f;
-
+    private float newTargetLightRadius;
 
     void Awake() {
         if (player == null) {
@@ -23,8 +24,13 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         checkMovement();
+        if (playerLight.pointLightOuterRadius < newTargetLightRadius) {
+            playerLight.pointLightOuterRadius = Mathf.Lerp(playerLight.pointLightOuterRadius, playerLight.pointLightOuterRadius + newTargetLightRadius, .001f);
+        } else {
+            newTargetLightRadius = 0f;
+        }
         decreasePlayerLight();
-        //Debug.Log("Player light radius: " + playerLight.pointLightOuterRadius);
+        Debug.Log("Player light radius: " + playerLight.pointLightOuterRadius);
     }
 
     /*
@@ -34,22 +40,37 @@ public class Player : MonoBehaviour {
     void checkMovement() {
         var move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         transform.position += (Vector3)move * speed * Time.deltaTime;
-        if (move != Vector2.zero && speed < 2f) {
+        if (move != Vector2.zero && speed < maxSpeed) {
             speed += .01f;
         } else if (move == Vector2.zero) {
             speed = 1;
         }
+
+        if (speed > maxSpeed) {
+            speed -= .01f;
+        }
     }
 
     void decreasePlayerLight() {
-        if (playerLight.pointLightOuterRadius <= 1) {
+        float lightRadius = playerLight.pointLightOuterRadius;
+        if (lightRadius <= 1f) {
             lightDecreaseSpeed = .0001f;
-        } else if (playerLight.pointLightOuterRadius <= 1.3) {
+            maxSpeed = 4f;
+        } else if (lightRadius <= 1.3f) {
             lightDecreaseSpeed = .0002f;
-        } else if (playerLight.pointLightOuterRadius <= 1.7) {
+            maxSpeed = 3.5f;
+        } else if (lightRadius <= 1.7f) {
             lightDecreaseSpeed = .0003f;
-        } else {
+            maxSpeed = 3f;
+        } else if (lightRadius <= 2f) {
             lightDecreaseSpeed = .0005f;
+            maxSpeed = 2.5f;
+        } else if (lightRadius <= 2.5f) {
+            lightDecreaseSpeed = .0008f;
+        } else if (lightRadius <= 3f) {
+            lightDecreaseSpeed = .001f;
+        } else if (lightRadius <= 3.5f) {
+            lightDecreaseSpeed = .0012f;
         }
         playerLight.pointLightOuterRadius -= lightDecreaseSpeed;
     }
@@ -58,12 +79,17 @@ public class Player : MonoBehaviour {
         Debug.Log("collision");
         Debug.Log(other.gameObject.ToString());
         if (other.gameObject.ToString().Contains("Food")) {
+            float foodLightRadius = other.gameObject.GetComponentInChildren<Light2D>().pointLightOuterRadius;
             Debug.Log("Success");
-            playerLight.pointLightOuterRadius += .3f;
+            if (newTargetLightRadius == 0) {
+                newTargetLightRadius = playerLight.pointLightOuterRadius + foodLightRadius / 5;
+            } else {
+                newTargetLightRadius = newTargetLightRadius + foodLightRadius / 5;
+            }
         }
         other.gameObject.SetActive(false);
-        //Destroy(other.gameObject);
-        FoodController.instance.SpawnFood();
+        Destroy(other.gameObject);
+        //FoodController.instance.SpawnFood();
 
     }
 

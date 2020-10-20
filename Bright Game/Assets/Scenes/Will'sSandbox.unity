@@ -347,9 +347,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   food: {fileID: 4666513215040099112, guid: 742c9877b98e7ae48a9788d1c8ee3838, type: 3}
+  cloneFood: {fileID: 0}
   sortingOrder: 0
-  foodXCoord: 0
-  foodYCoord: 1
+  foodLight: {fileID: 0}
+  respawnTime: 1
 --- !u!4 &1645223462
 Transform:
   m_ObjectHideFlags: 0
