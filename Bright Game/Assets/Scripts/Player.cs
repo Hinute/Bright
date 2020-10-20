@@ -23,13 +23,15 @@ public class Player : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        checkMovement();
-        if (playerLight.pointLightOuterRadius < newTargetLightRadius) {
-            playerLight.pointLightOuterRadius = Mathf.Lerp(playerLight.pointLightOuterRadius, playerLight.pointLightOuterRadius + newTargetLightRadius, .001f);
-        } else {
-            newTargetLightRadius = 0f;
+        if (!PauseMenu.isPaused) {
+            checkMovement();
+            if (playerLight.pointLightOuterRadius < newTargetLightRadius) {
+                playerLight.pointLightOuterRadius = Mathf.Lerp(playerLight.pointLightOuterRadius, playerLight.pointLightOuterRadius + newTargetLightRadius, .001f);
+            } else {
+                newTargetLightRadius = 0f;
+            }
+            decreasePlayerLight();
         }
-        decreasePlayerLight();
     }
 
     /*
