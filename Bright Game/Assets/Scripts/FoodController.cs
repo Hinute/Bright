@@ -31,7 +31,6 @@ public class FoodController : MonoBehaviour {
     }
 
     void Update() {
-        //Debug.Log("Food light radius: " + foodLight.pointLightOuterRadius);
         for (int i = 0; i< cloneFoods.Count; i++) {
             Light2D foodLight = cloneFoods[i].GetComponentInChildren<Light2D>();
             foodLight.pointLightOuterRadius -= .001f;
@@ -43,9 +42,6 @@ public class FoodController : MonoBehaviour {
     }
 
     public void SpawnFood() {
-        // if (cloneFood != null) {
-        //     Destroy(cloneFood);
-        // }
         cloneFood = Instantiate(food);
         cloneFoods.Add(cloneFood);
         cloneFood.GetComponentInChildren<Light2D>().pointLightOuterRadius = Random.Range(.4f, 2f);
