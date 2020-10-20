@@ -86,9 +86,10 @@ public class Player : MonoBehaviour {
             } else {
                 newTargetLightRadius = newTargetLightRadius + foodLightRadius / 5;
             }
+            FoodController.instance.DestroyObject(other.gameObject);
         }
-        other.gameObject.SetActive(false);
-        Destroy(other.gameObject);
+        //other.gameObject.SetActive(false);
+        //Destroy(other.gameObject);
         //FoodController.instance.SpawnFood();
 
     }

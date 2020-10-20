@@ -7,6 +7,7 @@ public class FoodController : MonoBehaviour {
 
     public GameObject food;
     public List<GameObject> cloneFoods;
+    public GameObject cloneFood;
     public int sortingOrder = 0;
     public static FoodController instance;
     private Vector2 screenBounds;
@@ -31,9 +32,13 @@ public class FoodController : MonoBehaviour {
 
     void Update() {
         //Debug.Log("Food light radius: " + foodLight.pointLightOuterRadius);
-        foodLight.pointLightOuterRadius -= .001f;
-        if (foodLight.pointLightOuterRadius <= 0) {
-            Destroy(cloneFood);
+        for (int i = 0; i< cloneFoods.Count; i++) {
+            Light2D foodLight = cloneFoods[i].GetComponentInChildren<Light2D>();
+            foodLight.pointLightOuterRadius -= .001f;
+            if (foodLight.pointLightOuterRadius <= 0) {
+            Destroy(cloneFoods[i]);
+            cloneFoods.RemoveAt(i);
+        }
         }
     }
 
@@ -42,8 +47,8 @@ public class FoodController : MonoBehaviour {
         //     Destroy(cloneFood);
         // }
         cloneFood = Instantiate(food);
-        foodLight = cloneFood.GetComponentInChildren<Light2D>();
-        foodLight.pointLightOuterRadius = Random.Range(.4f, 2f);
+        cloneFoods.Add(cloneFood);
+        cloneFood.GetComponentInChildren<Light2D>().pointLightOuterRadius = Random.Range(.4f, 2f);
         cloneFood.transform.position = new Vector2((Random.Range(-screenBounds.x, screenBounds.x)), (Random.Range(-screenBounds.y, screenBounds.y)));
     }
 
@@ -53,5 +58,10 @@ public class FoodController : MonoBehaviour {
             yield return new WaitForSeconds(respawnTime);
             SpawnFood();
         }
+    }
+
+    public void DestroyObject(GameObject gameObject) {
+        cloneFoods.Remove(gameObject);
+        Destroy(gameObject);
     }
 }
