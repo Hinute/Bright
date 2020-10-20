@@ -31,13 +31,15 @@ public class FoodController : MonoBehaviour {
     }
 
     void Update() {
-        for (int i = 0; i< cloneFoods.Count; i++) {
-            Light2D foodLight = cloneFoods[i].GetComponentInChildren<Light2D>();
-            foodLight.pointLightOuterRadius -= .001f;
-            if (foodLight.pointLightOuterRadius <= 0) {
-            Destroy(cloneFoods[i]);
-            cloneFoods.RemoveAt(i);
-        }
+        if (!PauseMenu.isPaused && !Player.isDead) {
+            for (int i = 0; i < cloneFoods.Count; i++) {
+                Light2D foodLight = cloneFoods[i].GetComponentInChildren<Light2D>();
+                foodLight.pointLightOuterRadius -= .001f;
+                if (foodLight.pointLightOuterRadius <= 0) {
+                    Destroy(cloneFoods[i]);
+                    cloneFoods.RemoveAt(i);
+                }
+            }
         }
     }
 
@@ -49,7 +51,7 @@ public class FoodController : MonoBehaviour {
     }
 
     IEnumerator timedFoodSpawn() {
-        while (true) {
+        while (true && !Player.isDead) {
             respawnTime = Random.Range(.8f, 5f);
             yield return new WaitForSeconds(respawnTime);
             SpawnFood();

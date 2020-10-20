@@ -11,8 +11,10 @@ public class Player : MonoBehaviour {
     public Light2D playerLight;
     private float lightDecreaseSpeed = .0001f;
     private float newTargetLightRadius;
+    public static bool isDead = false;
 
     void Awake() {
+        PlayerPrefs.SetInt("MaxSize", 0);
         if (player == null) {
             player = this;
             playerLight = this.GetComponentInChildren<Light2D>();
@@ -23,13 +25,20 @@ public class Player : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        checkMovement();
-        if (playerLight.pointLightOuterRadius < newTargetLightRadius) {
-            playerLight.pointLightOuterRadius = Mathf.Lerp(playerLight.pointLightOuterRadius, playerLight.pointLightOuterRadius + newTargetLightRadius, .001f);
-        } else {
-            newTargetLightRadius = 0f;
+        if (!PauseMenu.isPaused && !isDead) {
+            if((int)(playerLight.pointLightOuterRadius*100) >= PlayerPrefs.GetInt("MaxSize",0)){
+                PlayerPrefs.SetInt("MaxSize", (int)(playerLight.pointLightOuterRadius * 100));
+                Debug.Log("Saved new score");
+            }
+            Debug.Log("light*100: " + playerLight.pointLightOuterRadius*100);
+            checkMovement();
+            if (playerLight.pointLightOuterRadius < newTargetLightRadius) {
+                playerLight.pointLightOuterRadius = Mathf.Lerp(playerLight.pointLightOuterRadius, playerLight.pointLightOuterRadius + newTargetLightRadius, .001f);
+            } else {
+                newTargetLightRadius = 0f;
+            }
+            decreasePlayerLight();
         }
-        decreasePlayerLight();
     }
 
     /*
@@ -52,6 +61,9 @@ public class Player : MonoBehaviour {
 
     void decreasePlayerLight() {
         float lightRadius = playerLight.pointLightOuterRadius;
+        if (lightRadius <.5f){
+            lightDecreaseSpeed = .004f;
+        }
         if (lightRadius <= 1f) {
             lightDecreaseSpeed = .0001f;
             maxSpeed = 4f;
@@ -72,6 +84,9 @@ public class Player : MonoBehaviour {
             lightDecreaseSpeed = .0012f;
         }
         playerLight.pointLightOuterRadius -= lightDecreaseSpeed;
+        if (playerLight.pointLightOuterRadius <= 0) {
+            isDead = true;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other) {
