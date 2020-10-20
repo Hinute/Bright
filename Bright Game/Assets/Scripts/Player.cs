@@ -26,11 +26,10 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (!PauseMenu.isPaused && !isDead) {
-            if((int)(playerLight.pointLightOuterRadius*100) >= PlayerPrefs.GetInt("MaxSize",0)){
+            if ((int)(playerLight.pointLightOuterRadius * 100) >= PlayerPrefs.GetInt("MaxSize", 0)) {
                 PlayerPrefs.SetInt("MaxSize", (int)(playerLight.pointLightOuterRadius * 100));
                 Debug.Log("Saved new score");
             }
-            Debug.Log("light*100: " + playerLight.pointLightOuterRadius*100);
             checkMovement();
             if (playerLight.pointLightOuterRadius < newTargetLightRadius) {
                 playerLight.pointLightOuterRadius = Mathf.Lerp(playerLight.pointLightOuterRadius, playerLight.pointLightOuterRadius + newTargetLightRadius, .001f);
@@ -61,10 +60,11 @@ public class Player : MonoBehaviour {
 
     void decreasePlayerLight() {
         float lightRadius = playerLight.pointLightOuterRadius;
-        if (lightRadius <.5f){
-            lightDecreaseSpeed = .004f;
-        }
-        if (lightRadius <= 1f) {
+        if (lightRadius < .3f) {
+            lightDecreaseSpeed = .0005f;
+        } else if (lightRadius < .5f) {
+            lightDecreaseSpeed = .0004f;
+        } else if (lightRadius <= 1f) {
             lightDecreaseSpeed = .0001f;
             maxSpeed = 4f;
         } else if (lightRadius <= 1.3f) {
