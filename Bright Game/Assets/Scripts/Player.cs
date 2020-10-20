@@ -7,11 +7,14 @@ public class Player : MonoBehaviour {
 
     public static float speed = 1f;
     public static Player player;
+    public Light2D playerLight;
+    private float lightDecreaseSpeed = .0001f;
 
 
     void Awake() {
         if (player == null) {
             player = this;
+            playerLight = this.GetComponentInChildren<Light2D>();
         }
     }
 
@@ -20,6 +23,8 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         checkMovement();
+        decreasePlayerLight();
+        //Debug.Log("Player light radius: " + playerLight.pointLightOuterRadius);
     }
 
     /*
@@ -36,15 +41,28 @@ public class Player : MonoBehaviour {
         }
     }
 
+    void decreasePlayerLight() {
+        if (playerLight.pointLightOuterRadius <= 1) {
+            lightDecreaseSpeed = .0001f;
+        } else if (playerLight.pointLightOuterRadius <= 1.3) {
+            lightDecreaseSpeed = .0002f;
+        } else if (playerLight.pointLightOuterRadius <= 1.7) {
+            lightDecreaseSpeed = .0003f;
+        } else {
+            lightDecreaseSpeed = .0005f;
+        }
+        playerLight.pointLightOuterRadius -= lightDecreaseSpeed;
+    }
+
     void OnTriggerEnter2D(Collider2D other) {
         Debug.Log("collision");
         Debug.Log(other.gameObject.ToString());
         if (other.gameObject.ToString().Contains("Food")) {
             Debug.Log("Success");
-            this.GetComponentInChildren<Light2D>().pointLightOuterRadius += .3f;
+            playerLight.pointLightOuterRadius += .3f;
         }
         other.gameObject.SetActive(false);
-        Destroy(other.gameObject);
+        //Destroy(other.gameObject);
         FoodController.instance.SpawnFood();
 
     }
