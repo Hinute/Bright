@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Die
-    clip: {fileID: 8300000, guid: 5af9b2ba392721c40a1daddfbba0b2a1, type: 3}
+    clip: {fileID: 0}
     volume: 1
     pitch: 1
     source: {fileID: 0}
@@ -61,7 +61,15 @@ MonoBehaviour:
     loopToAudio: 
     valid: 0
   - name: Eat
-    clip: {fileID: 8300000, guid: ad4e2ed147d2a9c42a39e9357090d7eb, type: 3}
+    clip: {fileID: 0}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    loopToAudio: 
+    valid: 0
+  - name: Select
+    clip: {fileID: 8300000, guid: c3b83554ed438de4e91be3bf2e11c199, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
