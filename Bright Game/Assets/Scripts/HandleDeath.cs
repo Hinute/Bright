@@ -14,6 +14,7 @@ public class HandleDeath : MonoBehaviour
     void Start()
     {
         deathScreen.SetActive(false);
+        updated = false;
     }
 
     // Update is called once per frame

@@ -21,7 +21,9 @@ public class Player : MonoBehaviour {
         }
     }
 
-    void Start() { }
+    void Start() { 
+        isDead = false;
+    }
 
     // Update is called once per frame
     void Update() {
