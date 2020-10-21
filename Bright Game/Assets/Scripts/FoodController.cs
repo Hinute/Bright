@@ -25,7 +25,7 @@ public class FoodController : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        screenBounds = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
+        screenBounds = gameObject.GetComponent<Renderer>().bounds.size;
         SpawnFood();
         StartCoroutine(timedFoodSpawn());
     }
@@ -47,7 +47,7 @@ public class FoodController : MonoBehaviour {
         cloneFood = Instantiate(food);
         cloneFoods.Add(cloneFood);
         cloneFood.GetComponentInChildren<Light2D>().pointLightOuterRadius = Random.Range(.4f, 2f);
-        cloneFood.transform.position = new Vector2((Random.Range(-screenBounds.x, screenBounds.x)), (Random.Range(-screenBounds.y, screenBounds.y)));
+        cloneFood.transform.position = new Vector2((Random.Range(-(screenBounds.x / 2), (screenBounds.x / 2))), (Random.Range(-(screenBounds.y / 2), (screenBounds.y / 2))));
     }
 
     IEnumerator timedFoodSpawn() {

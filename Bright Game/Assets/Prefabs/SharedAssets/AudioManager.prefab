@@ -76,7 +76,7 @@ MonoBehaviour:
     loop: 0
     loopToAudio: 
     valid: 0
-  - name: Bump
+  - name: Wall
     clip: {fileID: 8300000, guid: f4d0bc1270ebf1a45b30af0b32e07d1d, type: 3}
     volume: 1
     pitch: 1
