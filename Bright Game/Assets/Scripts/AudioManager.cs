@@ -164,7 +164,7 @@ public class AudioManager : MonoBehaviour {
     // if the music volume change update all the audio sources
     public void musicVolumeChanged() {
         foreach (Sound m in playlist) {
-            mvol = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
+            mvol = PlayerPrefs.GetFloat("MusicVolume", 0.5);
             m.source.volume = playlist[0].volume * mvol;
         }
     }
