@@ -46,7 +46,9 @@ public class Player : MonoBehaviour {
      */
     void checkMovement() {
         var move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
         transform.position += (Vector3)move * speed * Time.deltaTime;
+
         if (move != Vector2.zero && speed < maxSpeed) {
             speed += .01f;
         } else if (move == Vector2.zero) {
@@ -61,31 +63,33 @@ public class Player : MonoBehaviour {
     void decreasePlayerLight() {
         float lightRadius = playerLight.pointLightOuterRadius;
         if (lightRadius < .3f) {
-            lightDecreaseSpeed = .0005f;
+            lightDecreaseSpeed = .005f;
         } else if (lightRadius < .5f) {
-            lightDecreaseSpeed = .0004f;
+            lightDecreaseSpeed = .004f;
         } else if (lightRadius <= 1f) {
-            lightDecreaseSpeed = .0001f;
+            lightDecreaseSpeed = .001f;
             maxSpeed = 4f;
         } else if (lightRadius <= 1.3f) {
-            lightDecreaseSpeed = .0002f;
+            lightDecreaseSpeed = .002f;
             maxSpeed = 3.5f;
         } else if (lightRadius <= 1.7f) {
-            lightDecreaseSpeed = .0003f;
+            lightDecreaseSpeed = .003f;
             maxSpeed = 3f;
         } else if (lightRadius <= 2f) {
-            lightDecreaseSpeed = .0005f;
+            lightDecreaseSpeed = .005f;
             maxSpeed = 2.5f;
         } else if (lightRadius <= 2.5f) {
-            lightDecreaseSpeed = .0008f;
+            lightDecreaseSpeed = .008f;
         } else if (lightRadius <= 3f) {
-            lightDecreaseSpeed = .001f;
+            lightDecreaseSpeed = .01f;
         } else if (lightRadius <= 3.5f) {
-            lightDecreaseSpeed = .0012f;
+            lightDecreaseSpeed = .012f;
+        } else {
+            lightDecreaseSpeed = .02f;
         }
         playerLight.pointLightOuterRadius -= lightDecreaseSpeed;
         if (playerLight.pointLightOuterRadius <= 0) {
-            isDead = true;
+            setDeathFlag();
         }
     }
 
@@ -93,40 +97,55 @@ public class Player : MonoBehaviour {
         Debug.Log("TRIGGERED Player: " + other.gameObject.ToString());
 
         if (other.gameObject.ToString().Contains("Food")) {
-            float foodLightRadius = other.gameObject.GetComponentInChildren<Light2D>().pointLightOuterRadius;
-            if (newTargetLightRadius == 0) {
-                newTargetLightRadius = playerLight.pointLightOuterRadius + foodLightRadius / 5;
-            } else {
-                newTargetLightRadius = newTargetLightRadius + foodLightRadius / 5;
-            }
-            FoodController.instance.DestroyObject(other.gameObject);
+            eatFood(other);
         }
 
         if (other.gameObject.tag == "World") {
-            Debug.Log("BUMP! I hit a wall!");
-
-            // TODO: need to add wall bump sound
-            // AudioManager.instance.PlaySound("Thud");
-
-            var xPosition = transform.position.x;
-            var yPosition = transform.position.y;
-            // Any lower and player can eventually go through the wall
-            var wallBufferDistance = .3f;
-
-            // Bounce off the wall a bit to prevent you from going through
-            if (xPosition >= 0) {
-                xPosition -= wallBufferDistance;
-            } else {
-                xPosition += wallBufferDistance;
-            }
-            if (yPosition >= 0) {
-                yPosition -= wallBufferDistance;
-            } else {
-                yPosition += wallBufferDistance;
-            }
-            transform.position = (Vector3)(new Vector2(xPosition, yPosition));
+            hitWall();
         }
+    }
+    void setDeathFlag() {
+        Debug.Log("DEATH");
+        isDead = true;
+    }
 
+    void eatFood(Collider2D other) {
+        Debug.Log("NOMS");
+
+        float foodLightRadius = other.gameObject.GetComponentInChildren<Light2D>().pointLightOuterRadius;
+
+        AudioManager.instance.PlaySound("Eat");
+
+        if (newTargetLightRadius == 0) {
+            newTargetLightRadius = playerLight.pointLightOuterRadius + foodLightRadius / 5;
+        } else {
+            newTargetLightRadius = newTargetLightRadius + foodLightRadius / 5;
+        }
+        FoodController.instance.DestroyObject(other.gameObject);
+    }
+
+    void hitWall() {
+        Debug.Log("BUMP! I hit a wall!");
+
+        AudioManager.instance.PlaySound("Bump");
+
+        var xPosition = transform.position.x;
+        var yPosition = transform.position.y;
+        // Any lower and player can eventually go through the wall
+        var wallBufferDistance = .3f;
+
+        // Bounce off the wall a bit to prevent you from going through
+        if (xPosition >= 0) {
+            xPosition -= wallBufferDistance;
+        } else {
+            xPosition += wallBufferDistance;
+        }
+        if (yPosition >= 0) {
+            yPosition -= wallBufferDistance;
+        } else {
+            yPosition += wallBufferDistance;
+        }
+        transform.position = (Vector3)(new Vector2(xPosition, yPosition));
     }
 
 }
