@@ -41,18 +41,21 @@ public class PauseMenu : MonoBehaviour {
     }
 
     void Resume() {
+        AudioManager.instance.PlaySound("Select");
         isPaused = false;
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
     }
 
     void Pause() {
+        AudioManager.instance.PlaySound("Select");
         isPaused = true;
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
     }
 
     public void ReturnToMainMenu() {
+        AudioManager.instance.PlaySound("Select");
         SceneManager.LoadScene("Bright-MainMenu");
     }
 
