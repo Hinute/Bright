@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Die
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 5af9b2ba392721c40a1daddfbba0b2a1, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
@@ -61,7 +61,7 @@ MonoBehaviour:
     loopToAudio: 
     valid: 0
   - name: Eat
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: ad4e2ed147d2a9c42a39e9357090d7eb, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
@@ -76,9 +76,25 @@ MonoBehaviour:
     loop: 0
     loopToAudio: 
     valid: 0
+  - name: Bump
+    clip: {fileID: 8300000, guid: f4d0bc1270ebf1a45b30af0b32e07d1d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    loopToAudio: 
+    valid: 0
   playlist:
   - name: Upbeat
     clip: {fileID: 8300000, guid: b588f39e5156f124ba000ef0bd03859d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+    loopToAudio: 
+    valid: 0
+  - name: Crystals
+    clip: {fileID: 8300000, guid: 05f5639589687d34e906556b0d41c10f, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}

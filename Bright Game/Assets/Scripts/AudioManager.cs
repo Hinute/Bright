@@ -175,6 +175,6 @@ public class AudioManager : MonoBehaviour {
         foreach (Sound s in sounds) {
             s.source.volume = s.volume * evol;
         }
-        sounds[0].source.Play(); // play an effect so user can her effect volume
+        PlaySound("Select"); // play an effect so user can her effect volume
     }
 }

@@ -21,21 +21,25 @@ public class MainMenuController : MonoBehaviour {
 
     public void PlayGame() {
         // Loads the next scene in the build settings after this one
+        AudioManager.instance.PlaySound("Select");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void ToOptionsMenu() {
+        AudioManager.instance.PlaySound("Select");
         mainMenu.SetActive(false);
         optionsMenu.SetActive(true);
     }
 
     public void ToMainMenu() {
+        AudioManager.instance.PlaySound("Select");
         optionsMenu.SetActive(false);
         mainMenu.SetActive(true);
     }
 
     public void ExitGame() {
         Debug.Log("QUIT: Bye bye!");
+        AudioManager.instance.PlaySound("Die");
         Application.Quit();
     }
 }
