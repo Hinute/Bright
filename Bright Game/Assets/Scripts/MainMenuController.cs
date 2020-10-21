@@ -12,7 +12,7 @@ public class MainMenuController : MonoBehaviour {
 
     void Start() {
         Debug.Log("MainMenuController: Started");
-        AudioManager.instance.PlayMusic("Upbeat");
+        AudioManager.instance.PlayMusic("Crystals");
     }
 
     void Update() {
@@ -22,6 +22,7 @@ public class MainMenuController : MonoBehaviour {
     public void PlayGame() {
         // Loads the next scene in the build settings after this one
         AudioManager.instance.PlaySound("Select");
+        AudioManager.instance.StopMusic();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
