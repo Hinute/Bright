@@ -21,15 +21,22 @@ public class HandleDeath : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (Player.isDead && !updated) {
-            deathScreen.SetActive(true);
-            maxSize.text += " " + PlayerPrefs.GetInt("MaxSize", 100);
-            updated = true;
+            killPlayer();
         }
     }
 
     public void ReturnToMainMenu() {
         deathScreen.SetActive(false);
         SceneManager.LoadScene("Bright-MainMenu");
+    }
+
+    void killPlayer() {
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlaySound("Die");
+
+        deathScreen.SetActive(true);
+        maxSize.text += " " + PlayerPrefs.GetInt("MaxSize", 100);
+        updated = true;
     }
 
 }

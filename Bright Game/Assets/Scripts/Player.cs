@@ -63,31 +63,33 @@ public class Player : MonoBehaviour {
     void decreasePlayerLight() {
         float lightRadius = playerLight.pointLightOuterRadius;
         if (lightRadius < .3f) {
-            lightDecreaseSpeed = .0005f;
+            lightDecreaseSpeed = .005f;
         } else if (lightRadius < .5f) {
-            lightDecreaseSpeed = .0004f;
+            lightDecreaseSpeed = .004f;
         } else if (lightRadius <= 1f) {
-            lightDecreaseSpeed = .0001f;
+            lightDecreaseSpeed = .001f;
             maxSpeed = 4f;
         } else if (lightRadius <= 1.3f) {
-            lightDecreaseSpeed = .0002f;
+            lightDecreaseSpeed = .002f;
             maxSpeed = 3.5f;
         } else if (lightRadius <= 1.7f) {
-            lightDecreaseSpeed = .0003f;
+            lightDecreaseSpeed = .003f;
             maxSpeed = 3f;
         } else if (lightRadius <= 2f) {
-            lightDecreaseSpeed = .0005f;
+            lightDecreaseSpeed = .005f;
             maxSpeed = 2.5f;
         } else if (lightRadius <= 2.5f) {
-            lightDecreaseSpeed = .0008f;
+            lightDecreaseSpeed = .008f;
         } else if (lightRadius <= 3f) {
-            lightDecreaseSpeed = .001f;
+            lightDecreaseSpeed = .01f;
         } else if (lightRadius <= 3.5f) {
-            lightDecreaseSpeed = .0012f;
+            lightDecreaseSpeed = .012f;
+        } else {
+            lightDecreaseSpeed = .02f;
         }
         playerLight.pointLightOuterRadius -= lightDecreaseSpeed;
         if (playerLight.pointLightOuterRadius <= 0) {
-            youDied();
+            setDeathFlag();
         }
     }
 
@@ -102,9 +104,8 @@ public class Player : MonoBehaviour {
             hitWall();
         }
     }
-    void youDied() {
+    void setDeathFlag() {
         Debug.Log("DEATH");
-        AudioManager.instance.PlaySound("Die");
         isDead = true;
     }
 
