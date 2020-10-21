@@ -16,6 +16,7 @@ public class PauseMenu : MonoBehaviour {
     }
     void Start() {
         pauseMenu.SetActive(false);
+        SetPanelTransparency();
         isPaused = false;
     }
 
@@ -30,6 +31,13 @@ public class PauseMenu : MonoBehaviour {
             }
             Debug.Log("isPaused: " + isPaused);
         }
+    }
+
+    void SetPanelTransparency(float transparencyValue = .9f) {
+        var panelImage = pauseMenu.GetComponent<Image>();
+        var tempColor = panelImage.color;
+        tempColor.a = transparencyValue;
+        panelImage.color = tempColor;
     }
 
     void Resume() {
