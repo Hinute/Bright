@@ -103,6 +103,11 @@ public class Player : MonoBehaviour {
         if (other.gameObject.tag == "World") {
             hitWall();
         }
+
+        if (other.gameObject.tag == "WorldEdge") {
+            Debug.Log("WHOA THERE " + other.gameObject.name + ", back up!");
+            pushBack(.5f);
+        }
     }
     void setDeathFlag() {
         Debug.Log("DEATH");
@@ -127,14 +132,15 @@ public class Player : MonoBehaviour {
     void hitWall() {
         Debug.Log("BUMP! I hit a wall!");
 
-        AudioManager.instance.PlaySound("Bump");
+        AudioManager.instance.PlaySound("Wall");
+        pushBack(.1f);
+    }
 
+    void pushBack(float wallBufferDistance = .1f) {
         var xPosition = transform.position.x;
         var yPosition = transform.position.y;
-        // Any lower and player can eventually go through the wall
-        var wallBufferDistance = .3f;
 
-        // Bounce off the wall a bit to prevent you from going through
+        // Bounce off the collider a bit to prevent you from going through
         if (xPosition >= 0) {
             xPosition -= wallBufferDistance;
         } else {
