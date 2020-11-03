@@ -36,7 +36,7 @@ public class FoodController : MonoBehaviour {
         if (!PauseMenu.isPaused && !Player.isDead) {
             for (int i = 0; i < cloneFoods.Count; i++) {
                 foodLight = cloneFoods[i].GetComponentInChildren<Light2D>();
-                foodLight.pointLightOuterRadius -= .002f;
+                foodLight.pointLightOuterRadius -= .001f;
                 if (foodLight.pointLightOuterRadius <= 0) {
                     Destroy(cloneFoods[i]);
                     cloneFoods.RemoveAt(i);
