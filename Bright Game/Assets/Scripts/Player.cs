@@ -114,10 +114,11 @@ public class Player : MonoBehaviour {
         isDead = true;
     }
 
-    void eatFood(Collider2D other) {
+    void eatFood(Collider2D foodCollider) {
         Debug.Log("NOMS");
 
-        float foodLightRadius = other.gameObject.GetComponentInChildren<Light2D>().pointLightOuterRadius;
+        Light2D foodLight = foodCollider.gameObject.GetComponentInChildren<Light2D>();
+        float foodLightRadius = foodLight.pointLightOuterRadius;
 
         AudioManager.instance.PlaySound("Eat");
 
@@ -126,7 +127,13 @@ public class Player : MonoBehaviour {
         } else {
             newTargetLightRadius = newTargetLightRadius + foodLightRadius / 5;
         }
-        FoodController.instance.DestroyObject(other.gameObject);
+        changePlayerColor(foodLight.color);
+        FoodController.instance.DestroyObject(foodCollider.gameObject);
+    }
+
+    void changePlayerColor(Color32 colorRgb) {
+        playerLight.color = colorRgb;
+        gameObject.GetComponent<SpriteRenderer>().color = colorRgb;
     }
 
     void hitWall() {
