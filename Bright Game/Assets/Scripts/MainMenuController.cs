@@ -9,6 +9,7 @@ public class MainMenuController : MonoBehaviour {
 
     public GameObject mainMenu;
     public GameObject optionsMenu;
+    public GameObject instructionsMenu;
 
     void Start() {
         Debug.Log("MainMenuController: Started");
@@ -35,7 +36,14 @@ public class MainMenuController : MonoBehaviour {
     public void ToMainMenu() {
         AudioManager.instance.PlaySound("Select");
         optionsMenu.SetActive(false);
+        instructionsMenu.SetActive(false);
         mainMenu.SetActive(true);
+    }
+
+    public void ToInstructionsMenu() {
+        AudioManager.instance.PlaySound("Select");
+        mainMenu.SetActive(false);
+        instructionsMenu.SetActive(true);
     }
 
     public void ExitGame() {
