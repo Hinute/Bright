@@ -24,6 +24,7 @@ public class MainMenuController : MonoBehaviour {
         AudioManager.instance.PlaySound("Select");
         AudioManager.instance.StopMusic();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Player.isDead = false;
     }
 
     public void ToOptionsMenu() {
