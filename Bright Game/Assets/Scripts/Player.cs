@@ -61,29 +61,29 @@ public class Player : MonoBehaviour {
     void decreasePlayerLight() {
         float lightRadius = playerLight.pointLightOuterRadius;
         if (lightRadius < .3f) {
-            lightDecreaseSpeed = .0005f;
+            lightDecreaseSpeed = .0006f;
         } else if (lightRadius < .5f) {
-            lightDecreaseSpeed = .0004f;
+            lightDecreaseSpeed = .00055f;
         } else if (lightRadius <= 1f) {
-            lightDecreaseSpeed = .0001f;
+            lightDecreaseSpeed = .00025f;
             maxSpeed = 4f;
         } else if (lightRadius <= 1.3f) {
-            lightDecreaseSpeed = .0002f;
+            lightDecreaseSpeed = .00035f;
             maxSpeed = 3.5f;
         } else if (lightRadius <= 1.7f) {
-            lightDecreaseSpeed = .0003f;
+            lightDecreaseSpeed = .00055f;
             maxSpeed = 3f;
         } else if (lightRadius <= 2f) {
-            lightDecreaseSpeed = .0005f;
+            lightDecreaseSpeed = .00065f;
             maxSpeed = 2.5f;
         } else if (lightRadius <= 2.5f) {
-            lightDecreaseSpeed = .0008f;
+            lightDecreaseSpeed = .00085f;
         } else if (lightRadius <= 3f) {
-            lightDecreaseSpeed = .001f;
+            lightDecreaseSpeed = .0015f;
         } else if (lightRadius <= 3.5f) {
-            lightDecreaseSpeed = .0012f;
+            lightDecreaseSpeed = .00125f;
         } else {
-            lightDecreaseSpeed = .002f;
+            lightDecreaseSpeed = .0025f;
         }
         playerLight.pointLightOuterRadius -= lightDecreaseSpeed;
         if (playerLight.pointLightOuterRadius <= 0) {
