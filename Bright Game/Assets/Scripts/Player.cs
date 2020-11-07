@@ -30,11 +30,12 @@ public class Player : MonoBehaviour {
             }
             checkMovement();
             if (playerLight.pointLightOuterRadius < newTargetLightRadius) {
-                playerLight.pointLightOuterRadius = Mathf.Lerp(playerLight.pointLightOuterRadius, playerLight.pointLightOuterRadius + newTargetLightRadius, .001f);
+                playerLight.pointLightOuterRadius = Mathf.Lerp(playerLight.pointLightOuterRadius, playerLight.pointLightOuterRadius + newTargetLightRadius, .005f);
             } else {
                 newTargetLightRadius = 0f;
+                decreasePlayerLight();
             }
-            decreasePlayerLight();
+            
         }
     }
 
@@ -61,29 +62,29 @@ public class Player : MonoBehaviour {
     void decreasePlayerLight() {
         float lightRadius = playerLight.pointLightOuterRadius;
         if (lightRadius < .3f) {
-            lightDecreaseSpeed = .0006f;
+            lightDecreaseSpeed = .004f;
         } else if (lightRadius < .5f) {
-            lightDecreaseSpeed = .00055f;
+            lightDecreaseSpeed = .0035f;
         } else if (lightRadius <= 1f) {
-            lightDecreaseSpeed = .00025f;
+            lightDecreaseSpeed = .0025f;
             maxSpeed = 4f;
         } else if (lightRadius <= 1.3f) {
-            lightDecreaseSpeed = .00035f;
+            lightDecreaseSpeed = .0035f;
             maxSpeed = 3.5f;
         } else if (lightRadius <= 1.7f) {
-            lightDecreaseSpeed = .00055f;
+            lightDecreaseSpeed = .004f;
             maxSpeed = 3f;
         } else if (lightRadius <= 2f) {
-            lightDecreaseSpeed = .00065f;
+            lightDecreaseSpeed = .0045f;
             maxSpeed = 2.5f;
         } else if (lightRadius <= 2.5f) {
-            lightDecreaseSpeed = .00085f;
+            lightDecreaseSpeed = .005f;
         } else if (lightRadius <= 3f) {
             lightDecreaseSpeed = .0015f;
         } else if (lightRadius <= 3.5f) {
-            lightDecreaseSpeed = .00125f;
+            lightDecreaseSpeed = .0055f;
         } else {
-            lightDecreaseSpeed = .0025f;
+            lightDecreaseSpeed = .0060f;
         }
         playerLight.pointLightOuterRadius -= lightDecreaseSpeed;
         if (playerLight.pointLightOuterRadius <= 0) {
@@ -121,9 +122,9 @@ public class Player : MonoBehaviour {
         AudioManager.instance.PlaySound("Eat");
 
         if (newTargetLightRadius == 0) {
-            newTargetLightRadius = playerLight.pointLightOuterRadius + foodLightRadius / 5;
+            newTargetLightRadius = playerLight.pointLightOuterRadius + (foodLightRadius / 4);
         } else {
-            newTargetLightRadius = newTargetLightRadius + foodLightRadius / 5;
+            newTargetLightRadius = newTargetLightRadius + (foodLightRadius / 4);
         }
         changePlayerColor(foodLight.color);
         FoodController.instance.DestroyObject(foodCollider.gameObject);
