@@ -75,11 +75,14 @@ public class FoodController : MonoBehaviour {
     }
 
     IEnumerator timedFoodSpawn() {
+        Debug.Log("Entering timedFoodSpawn");
         while (true && !Player.isDead) {
+            Debug.Log("Spawn food");
             respawnTime = Random.Range(.8f, 5f);
             yield return new WaitForSeconds(respawnTime);
             SpawnFood();
         }
+        Debug.Log("Not spawning food, player is dead?");
     }
 
     public void DestroyObject(GameObject gameObject) {

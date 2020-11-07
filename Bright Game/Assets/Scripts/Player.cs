@@ -21,8 +21,6 @@ public class Player : MonoBehaviour {
         }
     }
 
-    void Start() { }
-
     // Update is called once per frame
     void Update() {
         if (!PauseMenu.isPaused && !isDead) {
@@ -63,29 +61,29 @@ public class Player : MonoBehaviour {
     void decreasePlayerLight() {
         float lightRadius = playerLight.pointLightOuterRadius;
         if (lightRadius < .3f) {
-            lightDecreaseSpeed = .005f;
+            lightDecreaseSpeed = .0005f;
         } else if (lightRadius < .5f) {
-            lightDecreaseSpeed = .004f;
+            lightDecreaseSpeed = .0004f;
         } else if (lightRadius <= 1f) {
-            lightDecreaseSpeed = .001f;
+            lightDecreaseSpeed = .0001f;
             maxSpeed = 4f;
         } else if (lightRadius <= 1.3f) {
-            lightDecreaseSpeed = .002f;
+            lightDecreaseSpeed = .0002f;
             maxSpeed = 3.5f;
         } else if (lightRadius <= 1.7f) {
-            lightDecreaseSpeed = .003f;
+            lightDecreaseSpeed = .0003f;
             maxSpeed = 3f;
         } else if (lightRadius <= 2f) {
-            lightDecreaseSpeed = .005f;
+            lightDecreaseSpeed = .0005f;
             maxSpeed = 2.5f;
         } else if (lightRadius <= 2.5f) {
-            lightDecreaseSpeed = .008f;
+            lightDecreaseSpeed = .0008f;
         } else if (lightRadius <= 3f) {
-            lightDecreaseSpeed = .01f;
+            lightDecreaseSpeed = .001f;
         } else if (lightRadius <= 3.5f) {
-            lightDecreaseSpeed = .012f;
+            lightDecreaseSpeed = .0012f;
         } else {
-            lightDecreaseSpeed = .02f;
+            lightDecreaseSpeed = .002f;
         }
         playerLight.pointLightOuterRadius -= lightDecreaseSpeed;
         if (playerLight.pointLightOuterRadius <= 0) {
