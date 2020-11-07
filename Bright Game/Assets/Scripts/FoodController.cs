@@ -61,7 +61,7 @@ public class FoodController : MonoBehaviour {
     }
 
     public void SpawnFood() {
-        Color32 foodLightColor = colors[Random.Range(0, 5)];
+        Color32 foodLightColor = colors[Random.Range(0, 6)];
         Color32 foodSpriteColor = new Color32(foodLightColor.r, foodLightColor.g, foodLightColor.b, 0x77);
 
         cloneFood = Instantiate(food);
