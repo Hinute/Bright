@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1619870619658017898}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3, y: -3.4253168, z: 0}
+  m_LocalPosition: {x: -0.39, y: -0.16, z: 0}
   m_LocalScale: {x: 13.489513, y: 13.489513, z: 13.489513}
   m_Children: []
   m_Father: {fileID: 1619870620618264036}
@@ -45,11 +45,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_FalloffIntensity: 0.55
+  m_Color: {r: 0.70686793, g: 0.5451228, b: 0.9245283, a: 1}
+  m_Intensity: 1.13
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000f1a3cc3c
+  m_ApplyToSortingLayers: 00000000f1a3cc3cafb756ff
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 1.61
+  m_PointLightOuterRadius: 0.79
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -122,7 +122,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: d1f7eab83419bf647a9a2e31a2e3b065, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
