@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1.14
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 000000009b83db2b1deb09ba
+  m_ApplyToSortingLayers: 00000000afb756ffd10ce772
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -127,7 +127,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 31706b83728cf5646bccf0cde2fb94dc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -145,10 +145,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 735806363
-  m_SortingLayer: 0
+  m_SortingLayerID: 1020044273
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 78d58e12db167844a8bb0ac7a2e29c9e, type: 3}
+  m_Sprite: {fileID: -6815437586108985893, guid: 5a3cf34d91cd49d489571ce5786b8c01,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -218,7 +219,7 @@ Animation:
   m_GameObject: {fileID: 4130398103187753742}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: d6b668651e376e046a1126e287e57912, type: 2}
+  m_Animation: {fileID: 7400000, guid: dcc8c74fb2517d74eb3129cc3c511668, type: 2}
   m_Animations: []
   m_WrapMode: 0
   m_PlayAutomatically: 1
@@ -234,7 +235,7 @@ Animator:
   m_GameObject: {fileID: 4130398103187753742}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 412ec328f0eef5341affa7d7a753c6cc, type: 2}
+  m_Controller: {fileID: 9100000, guid: 435e110f3b51346469b9e9b4dffd9d9a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
