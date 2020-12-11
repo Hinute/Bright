@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4159126050901071266}
   - component: {fileID: 7521506590734862613}
   - component: {fileID: 3988561507150425838}
-  - component: {fileID: 2869329972033973595}
   m_Layer: 0
   m_Name: Lightning-bug-Food
   m_TagString: Untagged
@@ -134,27 +133,6 @@ CircleCollider2D:
   m_Offset: {x: 1.999999, y: -2.5174527}
   serializedVersion: 2
   m_Radius: 1.0314913
---- !u!50 &2869329972033973595
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2830071154951916407}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &2830071155117188170
 GameObject:
   m_ObjectHideFlags: 0
