@@ -26,10 +26,10 @@ using Thread = System.Threading.Thread;
 [HelpURL("http://arongranberg.com/astar/docs/class_astar_path.php")]
 public class AstarPath : VersionedMonoBehaviour {
 	/// <summary>The version number for the A* %Pathfinding Project</summary>
-	public static readonly System.Version Version = new System.Version(4, 2, 15);
+	public static readonly System.Version Version = new System.Version(4, 2, 8);
 
 	/// <summary>Information about where the package was downloaded</summary>
-	public enum AstarDistribution { WebsiteDownload, AssetStore, PackageManager };
+	public enum AstarDistribution { WebsiteDownload, AssetStore };
 
 	/// <summary>Used by the editor to guide the user to the correct place to download updates</summary>
 	public static readonly AstarDistribution Distribution = AstarDistribution.WebsiteDownload;
@@ -40,7 +40,7 @@ public class AstarPath : VersionedMonoBehaviour {
 	/// users of the development versions can get notifications of development
 	/// updates.
 	/// </summary>
-	public static readonly string Branch = "master";
+	public static readonly string Branch = "master_Free";
 
 	/// <summary>
 	/// See Pathfinding.AstarData
@@ -616,7 +616,7 @@ public class AstarPath : VersionedMonoBehaviour {
 
 	/// <summary>
 	/// Holds settings for heuristic optimization.
-	/// See: heuristic-opt (view in online documentation for working links)
+	/// See: heuristic-opt
 	/// </summary>
 	public EuclideanEmbedding euclideanEmbedding = new EuclideanEmbedding();
 
@@ -688,7 +688,7 @@ public class AstarPath : VersionedMonoBehaviour {
 	/// </summary>
 	public static string[] FindTagNames () {
 		FindAstarPath();
-		return active != null? active.GetTagNames () : new string[1] { "There is no AstarPath component in the scene" };
+		return active != null ? active.GetTagNames() : new string[1] { "There is no AstarPath component in the scene" };
 	}
 
 	/// <summary>Returns the next free path ID</summary>
@@ -713,7 +713,7 @@ public class AstarPath : VersionedMonoBehaviour {
 		for (int i = 0; i < graphs.Length; i++) {
 			if (graphs[i] != null && graphs[i].drawGizmos) {
 				graphs[i].GetNodes(node => {
-					if (node.Walkable && (ignoreSearchTree || Pathfinding.Util.GraphGizmoHelper.InSearchTree(node, debugPathData, debugPathID))) {
+					if (ignoreSearchTree || Pathfinding.Util.GraphGizmoHelper.InSearchTree(node, debugPathData, debugPathID)) {
 						if (debugMode == GraphDebugMode.Penalty) {
 							debugFloor = Mathf.Min(debugFloor, node.Penalty);
 							debugRoof = Mathf.Max(debugRoof, node.Penalty);
@@ -1389,7 +1389,7 @@ public class AstarPath : VersionedMonoBehaviour {
 		FlushWorkItems();
 
 		// Don't accept any more path calls to this AstarPath instance.
-		// This will cause all pathfinding threads to exit (if any exist)
+		// This will cause all eventual multithreading threads to exit
 		pathProcessor.queue.TerminateReceivers();
 
 		if (logPathResults == PathLog.Heavy)
@@ -1964,6 +1964,15 @@ public class AstarPath : VersionedMonoBehaviour {
 		if (!Application.isPlaying) {
 			BlockUntilCalculated(path);
 		}
+	}
+
+	/// <summary>Terminates pathfinding threads when the application quits</summary>
+	void OnApplicationQuit () {
+		OnDestroy();
+
+		// Abort threads if they are still running (likely because of some bug in that case)
+		// to make sure that the application can shut down properly
+		pathProcessor.AbortThreads();
 	}
 
 	/// <summary>

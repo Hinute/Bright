@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2830071154951916409}
   - component: {fileID: 2830071154951916408}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lightning bug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2830071155117188171}
   - component: {fileID: 2830071155117188172}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7052149512701978894}
   - component: {fileID: 7052149512701978895}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Point Light 2D (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7052149513766302783}
   - component: {fileID: 7052149513766302782}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Green-Food
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -82,7 +82,6 @@ namespace Pathfinding {
 		/// <summary>True if the node contains any blocker which is included in the selector list</summary>
 		public bool NodeContainsAnyOf (GraphNode node, List<SingleNodeBlocker> selector) {
 			List<SingleNodeBlocker> blockersInNode;
-
 			if (!blocked.TryGetValue(node, out blockersInNode)) {
 				return false;
 			}
@@ -103,7 +102,6 @@ namespace Pathfinding {
 		/// <summary>True if the node contains any blocker which is not included in the selector list</summary>
 		public bool NodeContainsAnyExcept (GraphNode node, List<SingleNodeBlocker> selector) {
 			List<SingleNodeBlocker> blockersInNode;
-
 			if (!blocked.TryGetValue(node, out blockersInNode)) {
 				return false;
 			}

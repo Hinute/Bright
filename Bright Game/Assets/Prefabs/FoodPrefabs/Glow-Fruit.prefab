@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8622175072373728038}
   - component: {fileID: 8622175072373728039}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8622175072814130499}
   - component: {fileID: 8622175072814130498}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Glow-Fruit
   m_TagString: Untagged
   m_Icon: {fileID: 0}

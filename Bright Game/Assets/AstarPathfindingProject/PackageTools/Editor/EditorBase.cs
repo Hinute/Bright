@@ -90,11 +90,7 @@ namespace Pathfinding {
 		public sealed override void OnInspectorGUI () {
 			EditorGUI.indentLevel = 0;
 			serializedObject.Update();
-			try {
-				Inspector();
-			} catch (System.Exception e) {
-				Debug.LogException(e, target);
-			}
+			Inspector();
 			serializedObject.ApplyModifiedProperties();
 			if (targets.Length == 1 && (target as MonoBehaviour).enabled) {
 				var attr = target.GetType().GetCustomAttributes(typeof(UniqueComponentAttribute), true);
