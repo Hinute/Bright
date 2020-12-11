@@ -93,8 +93,8 @@ public class Player : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other) {
         Debug.Log("TRIGGERED Player: " + other.gameObject.ToString());
-
-        if (other.gameObject.ToString().Contains("Food")) {
+        string gameObjectName = other.gameObject.ToString();
+        if (gameObjectName.Contains("Food")) {
             eatFood(other);
         }
 

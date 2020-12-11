@@ -10,6 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2830071154951916409}
   - component: {fileID: 2830071154951916408}
+  - component: {fileID: 4159126050901071266}
+  - component: {fileID: 7521506590734862613}
+  - component: {fileID: 3988561507150425838}
+  - component: {fileID: 2869329972033973595}
   m_Layer: 0
   m_Name: Lightning bug
   m_TagString: Untagged
@@ -25,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2830071154951916407}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.666575, y: -0.36069, z: 0}
+  m_LocalPosition: {x: 9.67, y: -0.378, z: 0}
   m_LocalScale: {x: 0.07775325, y: 0.07775325, z: 0.07775325}
   m_Children:
   - {fileID: 2830071155117188171}
@@ -82,6 +86,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &4159126050901071266
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2830071154951916407}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -2.3, y: 1.2}
+  serializedVersion: 2
+  m_Radius: 1.6693029
+--- !u!70 &7521506590734862613
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2830071154951916407}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.08058978, y: -0.9961954}
+  m_Size: {x: 4.8273034, y: 4.8273034}
+  m_Direction: 0
+--- !u!58 &3988561507150425838
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2830071154951916407}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.9999999, y: -2.6}
+  serializedVersion: 2
+  m_Radius: 1.30665
+--- !u!50 &2869329972033973595
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2830071154951916407}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2830071155117188170
 GameObject:
   m_ObjectHideFlags: 0
