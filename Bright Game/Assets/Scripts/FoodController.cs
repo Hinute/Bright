@@ -1,11 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
 public class FoodController : MonoBehaviour {
 
-    public GameObject food;
+    public GameObject blueFood;
+    public GameObject greenFood;
+    public GameObject orangeFood;
+    public GameObject purpleFood;
+    public GameObject redFood;
+    public GameObject yellowFood;
     public List<GameObject> cloneFoods;
     public GameObject cloneFood;
     public int sortingOrder = 0;
@@ -15,8 +21,8 @@ public class FoodController : MonoBehaviour {
     public float respawnTime = 5f;
     private List<Color32> colors = new List<Color32>();
 
+
     private void Awake() {
-        setColors();
         if (instance == null) { // if the instance var is null this is first AudioManager
             instance = this; //save this AudioManager in instance 
         } else {
@@ -45,40 +51,25 @@ public class FoodController : MonoBehaviour {
         }
     }
 
-    private void setColors() {
-        //red = "#FF0022"
-        colors.Add(new Color32(0xFF, 0x00, 0x22, 0xFF));
-        //orange = "#FF9900"
-        colors.Add(new Color32(0xFF, 0x99, 0x00, 0xFF));
-        //yellow = "#FFFF00"
-        colors.Add(new Color32(0xFF, 0xFF, 0x00, 0xFF));
-        //green = "#00FF00"
-        colors.Add(new Color32(0x00, 0xFF, 0x00, 0xFF));
-        //blue = "#0000FF"
-        colors.Add(new Color32(0x00, 0x00, 0xFF, 0xFF));
-        //purple = "#AA00FF";
-        colors.Add(new Color32(0xAA, 0x00, 0xFF, 0xFF));
-    }
-
     public void SpawnFood() {
-        Color32 foodLightColor = colors[Random.Range(0, 6)];
-        Color32 foodSpriteColor = new Color32(foodLightColor.r, foodLightColor.g, foodLightColor.b, 0x77);
 
-        cloneFood = Instantiate(food);
+        GameObject[] foods = {blueFood, greenFood, orangeFood, yellowFood, redFood, purpleFood};
+        System.Random random = new System.Random();
+        int randomIndex = random.Next(foods.Length);
+
+        cloneFood = Instantiate(foods[randomIndex]);
         cloneFoods.Add(cloneFood);
 
-        cloneFood.GetComponentInChildren<SpriteRenderer>().color = foodSpriteColor;
-        cloneFood.GetComponentInChildren<Light2D>().pointLightOuterRadius = Random.Range(.4f, 2f);
-        cloneFood.GetComponentInChildren<Light2D>().color = foodLightColor;
+        cloneFood.GetComponentInChildren<Light2D>().pointLightOuterRadius = UnityEngine.Random.Range(.4f, 2f);
 
-        cloneFood.transform.position = new Vector2((Random.Range(-(screenBounds.x / 2), (screenBounds.x / 2))), (Random.Range(-(screenBounds.y / 2), (screenBounds.y / 2))));
+        cloneFood.transform.position = new Vector2((UnityEngine.Random.Range(-(screenBounds.x / 2), (screenBounds.x / 2))), (UnityEngine.Random.Range(-(screenBounds.y / 2), (screenBounds.y / 2))));
     }
 
     IEnumerator timedFoodSpawn() {
         Debug.Log("Entering timedFoodSpawn");
         while (true && !Player.isDead) {
             Debug.Log("Spawn food");
-            respawnTime = Random.Range(.8f, 5f);
+            respawnTime = UnityEngine.Random.Range(.8f, 5f);
             yield return new WaitForSeconds(respawnTime);
             SpawnFood();
         }
