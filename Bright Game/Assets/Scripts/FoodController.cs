@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
@@ -21,7 +21,6 @@ public class FoodController : MonoBehaviour {
     public float respawnTime = 5f;
     private List<Color32> colors = new List<Color32>();
 
-
     private void Awake() {
         if (instance == null) { // if the instance var is null this is first AudioManager
             instance = this; //save this AudioManager in instance 
@@ -33,6 +32,7 @@ public class FoodController : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        Player.isDead = false;
         screenBounds = gameObject.GetComponent<Renderer>().bounds.size;
         SpawnFood();
         StartCoroutine(timedFoodSpawn());
@@ -53,7 +53,7 @@ public class FoodController : MonoBehaviour {
 
     public void SpawnFood() {
 
-        GameObject[] foods = {blueFood, greenFood, orangeFood, yellowFood, redFood, purpleFood};
+        GameObject[] foods = { blueFood, greenFood, orangeFood, yellowFood, redFood, purpleFood };
         System.Random random = new System.Random();
         int randomIndex = random.Next(foods.Length);
 
@@ -73,7 +73,7 @@ public class FoodController : MonoBehaviour {
             yield return new WaitForSeconds(respawnTime);
             SpawnFood();
         }
-        Debug.Log("Not spawning food, player is dead?");
+        Debug.Log("Not spawning food, player is dead? Dead: " + Player.isDead);
     }
 
     public void DestroyObject(GameObject gameObject) {

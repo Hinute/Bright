@@ -27,7 +27,14 @@ public class HandleDeath : MonoBehaviour {
 
     public void ReturnToMainMenu() {
         deathScreen.SetActive(false);
+        AudioManager.instance.PlaySound("Select");
         SceneManager.LoadScene("Bright-MainMenu");
+    }
+
+    public void Replay() {
+        deathScreen.SetActive(false);
+        AudioManager.instance.PlaySound("Select");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void killPlayer() {

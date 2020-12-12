@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
@@ -91,9 +91,8 @@ public class Player : MonoBehaviour {
             maxSpeed = 3f;
         } else if (lightRadius > 1f && lightRadius <= 3f) {
             lightDecreaseSpeed = baseDecreaseSpeed * lightRadius;
-            maxSpeed = baseMaxSpeed - ((float)Math.Sqrt(lightRadius)/2);
-        }
-        else {
+            maxSpeed = baseMaxSpeed - ((float)Math.Sqrt(lightRadius) / 2);
+        } else {
             lightDecreaseSpeed = baseDecreaseSpeed * 4f;
         }
         playerLight.pointLightOuterRadius -= lightDecreaseSpeed;
