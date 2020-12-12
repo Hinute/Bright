@@ -56,6 +56,7 @@ public class PauseMenu : MonoBehaviour {
 
     public void ReturnToMainMenu() {
         AudioManager.instance.PlaySound("Select");
+        AudioManager.instance.StopMusic();
         SceneManager.LoadScene("Bright-MainMenu");
     }
 
