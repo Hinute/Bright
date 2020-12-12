@@ -2687,17 +2687,17 @@ PrefabInstance:
     - target: {fileID: 1408362842192468729, guid: 51c0b511ab18044a4847a5ee703cf6ef,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 401
+      value: 427
       objectReference: {fileID: 0}
     - target: {fileID: 1408362842192468729, guid: 51c0b511ab18044a4847a5ee703cf6ef,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 74
+      value: 79
       objectReference: {fileID: 0}
     - target: {fileID: 1408362842192468729, guid: 51c0b511ab18044a4847a5ee703cf6ef,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 1408362842192468729, guid: 51c0b511ab18044a4847a5ee703cf6ef,
         type: 3}
@@ -2711,13 +2711,13 @@ PrefabInstance:
         running out! Grow your brightness by absorbing other points of light that
         spawn on the map. You will take on some of the other lights' hue.\n\nNot
         Implemented Yet:\n- gain powerups depending on the hue\n- shadow enemies
-        that absorb your bright\n- dead lights will give you debuffs\n\nControls:
-        \n- Movement: Arrow Keys\n- Pause/Exit: Esc Key"
+        that absorb your bright\n- dead lights will give you debuffs\n- levels and
+        win criteria\n\nControls: \n- Movement: Arrow Keys\n- Pause/Exit: Esc Key"
       objectReference: {fileID: 0}
     - target: {fileID: 1408362842192468729, guid: 51c0b511ab18044a4847a5ee703cf6ef,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 76
+      value: 81
       objectReference: {fileID: 0}
     - target: {fileID: 1408362842192468729, guid: 51c0b511ab18044a4847a5ee703cf6ef,
         type: 3}
