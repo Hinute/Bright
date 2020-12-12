@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
 public class Player : MonoBehaviour {
 
-    public static float maxSpeed = 2f;
+    public static float maxSpeed = 3f;
+    private float baseMaxSpeed = 3f;
     public static float speed = 1f;
     public static Player player;
     public Light2D playerLight;
     private float lightDecreaseSpeed = .0001f;
     private float newTargetLightRadius;
     public static bool isDead = false;
+    private float baseDecreaseSpeed = .0005f;
 
     void Awake() {
         PlayerPrefs.SetInt("MaxSize", 0);
@@ -24,17 +27,22 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (!PauseMenu.isPaused && !isDead) {
-            if ((int)(playerLight.pointLightOuterRadius * 100) >= PlayerPrefs.GetInt("MaxSize", 0)) {
-                PlayerPrefs.SetInt("MaxSize", (int)(playerLight.pointLightOuterRadius * 100));
-                Debug.Log("Saved new score");
-            }
+            float currentLightRadius = playerLight.pointLightOuterRadius;
+            int currentScore = (int)(currentLightRadius * 100);
+            maybeSaveNewMaxScore(currentScore);
             checkMovement();
-            if (playerLight.pointLightOuterRadius < newTargetLightRadius) {
-                playerLight.pointLightOuterRadius = Mathf.Lerp(playerLight.pointLightOuterRadius, playerLight.pointLightOuterRadius + newTargetLightRadius, .001f);
-            } else {
-                newTargetLightRadius = 0f;
-            }
+            maybeIncreasePlayerLight(currentLightRadius);
             decreasePlayerLight();
+        }
+    }
+
+    /*
+     * Checks if current score is higher than previous MaxScore, saves current score if true
+     */
+    void maybeSaveNewMaxScore(int currentScore) {
+        if ((currentScore) > PlayerPrefs.GetInt("MaxSize", 0)) {
+            PlayerPrefs.SetInt("MaxSize", currentScore);
+            Debug.Log("Saved new score");
         }
     }
 
@@ -58,32 +66,35 @@ public class Player : MonoBehaviour {
         }
     }
 
+    /*
+     * Checks if player light radius should be increasing by comparing current light radius with target light radius
+     * Once current light radius is greater than or equal to target light radius, reset newTargetLightRadius to 0
+     * to prevent the light from continuing to try to increase
+     */
+    void maybeIncreasePlayerLight(float currentLightRadius) {
+        if (currentLightRadius < newTargetLightRadius) {
+            playerLight.pointLightOuterRadius = Mathf.Lerp(currentLightRadius, currentLightRadius + newTargetLightRadius, .001f);
+        } else {
+            newTargetLightRadius = 0f;
+        }
+    }
+
     void decreasePlayerLight() {
         float lightRadius = playerLight.pointLightOuterRadius;
         if (lightRadius < .3f) {
-            lightDecreaseSpeed = .0005f;
-        } else if (lightRadius < .5f) {
-            lightDecreaseSpeed = .0004f;
-        } else if (lightRadius <= 1f) {
-            lightDecreaseSpeed = .0001f;
-            maxSpeed = 4f;
-        } else if (lightRadius <= 1.3f) {
-            lightDecreaseSpeed = .0002f;
             maxSpeed = 3.5f;
-        } else if (lightRadius <= 1.7f) {
-            lightDecreaseSpeed = .0003f;
+            lightDecreaseSpeed = baseDecreaseSpeed;
+        } else if (lightRadius < .5f) {
+            lightDecreaseSpeed = baseDecreaseSpeed * .9f;
+        } else if (lightRadius <= 1f) {
+            lightDecreaseSpeed = baseDecreaseSpeed * .4f;
             maxSpeed = 3f;
-        } else if (lightRadius <= 2f) {
-            lightDecreaseSpeed = .0005f;
-            maxSpeed = 2.5f;
-        } else if (lightRadius <= 2.5f) {
-            lightDecreaseSpeed = .0008f;
-        } else if (lightRadius <= 3f) {
-            lightDecreaseSpeed = .001f;
-        } else if (lightRadius <= 3.5f) {
-            lightDecreaseSpeed = .0012f;
-        } else {
-            lightDecreaseSpeed = .002f;
+        } else if (lightRadius > 1f && lightRadius <= 3f) {
+            lightDecreaseSpeed = baseDecreaseSpeed * lightRadius;
+            maxSpeed = baseMaxSpeed - ((float)Math.Sqrt(lightRadius)/2);
+        }
+        else {
+            lightDecreaseSpeed = baseDecreaseSpeed * 4f;
         }
         playerLight.pointLightOuterRadius -= lightDecreaseSpeed;
         if (playerLight.pointLightOuterRadius <= 0) {
