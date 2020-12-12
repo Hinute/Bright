@@ -14,7 +14,7 @@ public class Player : MonoBehaviour {
     private float lightDecreaseSpeed = .0001f;
     private float newTargetLightRadius;
     public static bool isDead = false;
-    private float baseDecreaseSpeed = .0005f;
+    private float baseDecreaseSpeed = .0025f;
 
     void Awake() {
         PlayerPrefs.SetInt("MaxSize", 0);

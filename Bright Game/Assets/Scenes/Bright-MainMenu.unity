@@ -2444,6 +2444,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7318170018646723853, guid: 21b4dc87cd5d243e8a45d33f42470147,
         type: 3}
+      propertyPath: playlist.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318170018646723853, guid: 21b4dc87cd5d243e8a45d33f42470147,
+        type: 3}
       propertyPath: playlist.Array.data[0].name
       value: Upbeat
       objectReference: {fileID: 0}
@@ -2461,6 +2466,41 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[0].volume
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318170018646723853, guid: 21b4dc87cd5d243e8a45d33f42470147,
+        type: 3}
+      propertyPath: playlist.Array.data[0].loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318170018646723853, guid: 21b4dc87cd5d243e8a45d33f42470147,
+        type: 3}
+      propertyPath: playlist.Array.data[0].loopToAudio
+      value: Upbeat2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318170018646723853, guid: 21b4dc87cd5d243e8a45d33f42470147,
+        type: 3}
+      propertyPath: playlist.Array.data[2].name
+      value: Crystals
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318170018646723853, guid: 21b4dc87cd5d243e8a45d33f42470147,
+        type: 3}
+      propertyPath: playlist.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 05f5639589687d34e906556b0d41c10f, type: 3}
+    - target: {fileID: 7318170018646723853, guid: 21b4dc87cd5d243e8a45d33f42470147,
+        type: 3}
+      propertyPath: playlist.Array.data[2].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318170018646723853, guid: 21b4dc87cd5d243e8a45d33f42470147,
+        type: 3}
+      propertyPath: playlist.Array.data[2].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7318170018646723853, guid: 21b4dc87cd5d243e8a45d33f42470147,
+        type: 3}
+      propertyPath: playlist.Array.data[2].loop
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21b4dc87cd5d243e8a45d33f42470147, type: 3}
