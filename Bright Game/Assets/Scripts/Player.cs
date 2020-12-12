@@ -92,21 +92,32 @@ public class Player : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("TRIGGERED Player: " + other.gameObject.ToString());
         string gameObjectName = other.gameObject.ToString();
+        Debug.Log("TRIGGERED Player: " + gameObjectName);
+
         if (gameObjectName.Contains("Food")) {
             eatFood(other);
         }
+    }
 
-        if (other.gameObject.tag == "World") {
+    void OnCollisionEnter2D(Collision2D collision) {
+        GameObject gameObjectObstruction = collision.gameObject;
+        Debug.Log("NEW COLLIDED Player: " + gameObjectObstruction.ToString());
+
+        if (gameObjectObstruction.tag == "World") {
             hitWall();
         }
+    }
 
-        if (other.gameObject.tag == "WorldEdge") {
-            Debug.Log("WHOA THERE " + other.gameObject.name + ", back up!");
-            pushBack(.5f);
+    void OnCollisionStay2D(Collision2D collision) {
+        GameObject gameObjectObstruction = collision.gameObject;
+        Debug.Log("STAYED COLLIDED Player: " + gameObjectObstruction.ToString());
+
+        if (gameObjectObstruction.tag == "World") {
+            hitWall();
         }
     }
+
     void setDeathFlag() {
         Debug.Log("DEATH");
         isDead = true;
@@ -136,27 +147,12 @@ public class Player : MonoBehaviour {
 
     void hitWall() {
         Debug.Log("BUMP! I hit a wall!");
+        AudioManager audioManager = AudioManager.instance;
+        Sound[] sounds = audioManager.sounds;
+        Sound wallSound = audioManager.FindAudioByName("Wall", sounds);
 
-        AudioManager.instance.PlaySound("Wall");
-        pushBack(.1f);
-    }
-
-    void pushBack(float wallBufferDistance = .1f) {
-        var xPosition = transform.position.x;
-        var yPosition = transform.position.y;
-
-        // Bounce off the collider a bit to prevent you from going through
-        if (xPosition >= 0) {
-            xPosition -= wallBufferDistance;
-        } else {
-            xPosition += wallBufferDistance;
+        if (!wallSound.source.isPlaying) {
+            audioManager.PlaySound("Wall");
         }
-        if (yPosition >= 0) {
-            yPosition -= wallBufferDistance;
-        } else {
-            yPosition += wallBufferDistance;
-        }
-        transform.position = (Vector3)(new Vector2(xPosition, yPosition));
     }
-
 }
