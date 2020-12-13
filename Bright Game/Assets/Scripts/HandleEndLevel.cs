@@ -60,10 +60,10 @@ public class HandleEndLevel : MonoBehaviour {
     }
 
     public void nextLevel(){
-        // SceneManager.LoadScene(); TODO Add next scene here!
         Player.isWon = false;
         updated = false;
         winScreen.SetActive(false);
+        // SceneManager.LoadScene(); TODO Add next scene here!
     }
 
 }
