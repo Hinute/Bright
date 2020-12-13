@@ -107,9 +107,11 @@ public class Player : MonoBehaviour {
 
         if (gameObjectName.Contains("Food")) {
             eatFood(other);
+        } else if (gameObjectName.Contains("enemy")) {
+            damagePlayer();
+            Destroy(other.gameObject);
         }
     }
-
     void OnCollisionEnter2D(Collision2D collision) {
         GameObject gameObjectObstruction = collision.gameObject;
         Debug.Log("NEW COLLIDED Player: " + gameObjectObstruction.ToString());
@@ -128,6 +130,9 @@ public class Player : MonoBehaviour {
         }
     }
 
+    void damagePlayer(){
+        playerLight.pointLightOuterRadius -= .5f;
+    }
     void setDeathFlag() {
         Debug.Log("DEATH");
         isDead = true;
