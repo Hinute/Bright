@@ -11,11 +11,12 @@ public class Player : MonoBehaviour {
     public static float speed = 1f;
     public static Player player;
     public Light2D playerLight;
-    private float lightDecreaseSpeed = .0001f;
+    private float lightDecreaseSpeed = .0025f;
     private float newTargetLightRadius;
     public static bool isDead = false;
     private float baseDecreaseSpeed = .0025f;
-
+    public int targetFrameRate = 120;
+    
     void Awake() {
         PlayerPrefs.SetInt("MaxSize", 0);
         if (player == null) {
@@ -24,8 +25,17 @@ public class Player : MonoBehaviour {
         }
     }
 
+    void Start(){
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = targetFrameRate;
+    }
+
     // Update is called once per frame
     void Update() {
+        if (Application.targetFrameRate != targetFrameRate){
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = targetFrameRate;
+        }
         if (!PauseMenu.isPaused && !isDead) {
             float currentLightRadius = playerLight.pointLightOuterRadius;
             int currentScore = (int)(currentLightRadius * 100);
@@ -73,7 +83,7 @@ public class Player : MonoBehaviour {
      */
     void maybeIncreasePlayerLight(float currentLightRadius) {
         if (currentLightRadius < newTargetLightRadius) {
-            playerLight.pointLightOuterRadius = Mathf.Lerp(currentLightRadius, currentLightRadius + newTargetLightRadius, .001f);
+            playerLight.pointLightOuterRadius = Mathf.Lerp(currentLightRadius, currentLightRadius + newTargetLightRadius, .005f);
         } else {
             newTargetLightRadius = 0f;
         }
