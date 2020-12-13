@@ -762,7 +762,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.35
+      scalar: 0.53
       minScalar: 0.15
       maxCurve:
         serializedVersion: 2
@@ -4263,7 +4263,7 @@ ParticleSystem:
     serializedVersion: 3
     type: 1
     collisionMode: 1
-    colliderForce: 0
+    colliderForce: 0.5
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
     multiplyColliderForceByCollisionAngle: 1
@@ -7339,10 +7339,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4432766486200185493, guid: 915f886083b078345893e06ac7413cd6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ef060dec024d73e4abdd6b348e3abd4d, type: 2}
     - target: {fileID: 4432766486200185498, guid: 915f886083b078345893e06ac7413cd6,
         type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432766487632856544, guid: 915f886083b078345893e06ac7413cd6,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4432766487632856547, guid: 915f886083b078345893e06ac7413cd6,
         type: 3}
