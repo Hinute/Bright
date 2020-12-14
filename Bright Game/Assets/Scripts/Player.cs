@@ -26,7 +26,7 @@ public class Player : MonoBehaviour {
         }
     }
 
-    void Start(){
+    void Start() {
         Debug.Log("Start ran");
         isWon = false;
         QualitySettings.vSyncCount = 0;
@@ -35,15 +35,15 @@ public class Player : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Application.targetFrameRate != targetFrameRate){
+        if (Application.targetFrameRate != targetFrameRate) {
             QualitySettings.vSyncCount = 0;
             Application.targetFrameRate = targetFrameRate;
         }
         if (!PauseMenu.isPaused && !isDead && !isWon) {
             float currentLightRadius = playerLight.pointLightOuterRadius;
             int currentScore = (int)(currentLightRadius * 100);
-            LevelCompletion.instance.setLevelCompletion((float)(playerLight.pointLightOuterRadius/3));
-            if (currentLightRadius >= 3f){
+            LevelCompletion.instance.setLevelCompletion((float)(playerLight.pointLightOuterRadius / 3));
+            if (currentLightRadius >= 3f) {
                 isWon = true;
             }
             maybeSaveNewMaxScore(currentScore);
@@ -124,7 +124,7 @@ public class Player : MonoBehaviour {
 
         if (gameObjectName.Contains("Food")) {
             eatFood(other);
-        } 
+        }
     }
     void OnCollisionEnter2D(Collision2D collision) {
         GameObject gameObjectObstruction = collision.gameObject;
@@ -145,11 +145,14 @@ public class Player : MonoBehaviour {
         } else if (gameObjectName.Contains("Enemy")) {
             Debug.Log("Enemy collision");
             damagePlayer();
+            // TODO: Add another enemy or just push the enemy back
             Destroy(collision.gameObject);
         }
     }
 
-    void damagePlayer(){
+    void damagePlayer() {
+        // TODO: Add damage sound
+        AudioManager.instance.PlaySound("Wall");
         playerLight.pointLightOuterRadius -= .2f;
         newTargetLightRadius = 0f;
     }

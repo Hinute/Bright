@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelCompletion : MonoBehaviour
-{
+public class LevelCompletion : MonoBehaviour {
 
     public static bool levelCompleted = false;
 
@@ -21,29 +20,24 @@ public class LevelCompletion : MonoBehaviour
         }
     }
 
-    void Start()
-    {
+    void Start() {
         levelCompleted = false;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
+
     }
 
-    public void resetLevelCompleted(){
+    public void resetLevelCompleted() {
         levelCompleted = false;
     }
 
-    public void setLevelCompletion(float percentage){
+    public void setLevelCompletion(float percentage) {
         levelCompletionSlider.value = percentage;
-        if (percentage >= 1f){
+        if (percentage >= 1f) {
             levelCompleted = true;
         }
     }
-
-
-
 
 }
