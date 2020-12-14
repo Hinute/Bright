@@ -20,6 +20,7 @@ public class FoodController : MonoBehaviour {
     public Light2D foodLight;
     public float respawnTime = 5f;
     private List<Color32> colors = new List<Color32>();
+    private int spawnCount = 1;
 
     private void Awake() {
         if (instance == null) { // if the instance var is null this is first AudioManager
@@ -65,13 +66,37 @@ public class FoodController : MonoBehaviour {
         cloneFood.transform.position = new Vector2((UnityEngine.Random.Range(-(screenBounds.x / 2), (screenBounds.x / 2))), (UnityEngine.Random.Range(-(screenBounds.y / 2), (screenBounds.y / 2))));
     }
 
+    public void ChangeSpawnCount(bool increment) {
+        if (increment) {
+            if (spawnCount < 3) {
+                spawnCount++;
+            } else {
+                Debug.Log("Reached max spawn rate");
+            }
+        } else {
+            if (spawnCount > 0) {
+                spawnCount--;
+            } else if (cloneFoods.Count > 0) {
+                int randomIndex = new System.Random().Next(cloneFoods.Count);
+                DestroyObject(cloneFoods[randomIndex]);
+            } else {
+                Debug.Log("Do Damage To Character");
+            }
+        }
+    }
+
     IEnumerator timedFoodSpawn() {
         Debug.Log("Entering timedFoodSpawn");
         while (true && !Player.isDead) {
             Debug.Log("Spawn food");
             respawnTime = UnityEngine.Random.Range(1f, 7f);
             yield return new WaitForSeconds(respawnTime);
-            SpawnFood();
+
+            int spawnedCount = 0;
+            while (spawnedCount < spawnCount) {
+                SpawnFood();
+                spawnedCount++;
+            }
         }
         Debug.Log("Not spawning food, player is dead? Dead: " + Player.isDead);
     }
