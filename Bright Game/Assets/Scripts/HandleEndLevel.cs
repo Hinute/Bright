@@ -61,9 +61,10 @@ public class HandleEndLevel : MonoBehaviour {
 
     public void nextLevel(){
         Player.isWon = false;
-        updated = false;
+        //updated = false;
         winScreen.SetActive(false);
-        // SceneManager.LoadScene(); TODO Add next scene here!
+        LevelCompletion.instance.resetLevelCompleted();
+        SceneManager.LoadScene("Em2");
     }
 
 }

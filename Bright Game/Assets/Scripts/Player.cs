@@ -151,6 +151,7 @@ public class Player : MonoBehaviour {
 
     void damagePlayer(){
         playerLight.pointLightOuterRadius -= .2f;
+        newTargetLightRadius = 0f;
     }
     void setDeathFlag() {
         Debug.Log("DEATH");
