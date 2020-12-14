@@ -35,7 +35,7 @@ public class LevelCompletion : MonoBehaviour {
 
     public void setLevelCompletion(float percentage) {
         levelCompletionSlider.value = percentage;
-        if (percentage >= 1f) {
+        if (percentage >= levelCompletionSlider.maxValue) {
             levelCompleted = true;
         }
     }

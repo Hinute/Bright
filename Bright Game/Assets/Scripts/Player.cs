@@ -14,10 +14,10 @@ public class Player : MonoBehaviour {
     private float lightDecreaseSpeed = .0025f;
     private float newTargetLightRadius;
     public static bool isDead = false;
-    private float baseDecreaseSpeed = .0025f;
+    private float baseDecreaseSpeed = .0010f;
     public int targetFrameRate = 120;
     public static bool isWon = false;
-    
+
     void Awake() {
         PlayerPrefs.SetInt("MaxSize", 0);
         if (player == null) {
@@ -107,10 +107,10 @@ public class Player : MonoBehaviour {
             lightDecreaseSpeed = baseDecreaseSpeed * .4f;
             maxSpeed = 3f;
         } else if (lightRadius > 1f && lightRadius <= 3f) {
-            lightDecreaseSpeed = baseDecreaseSpeed * lightRadius;
+            lightDecreaseSpeed = baseDecreaseSpeed * lightRadius / 2f;
             maxSpeed = baseMaxSpeed - ((float)Math.Sqrt(lightRadius) / 2);
         } else {
-            lightDecreaseSpeed = baseDecreaseSpeed * 4f;
+            lightDecreaseSpeed = baseDecreaseSpeed * 2f;
         }
         playerLight.pointLightOuterRadius -= lightDecreaseSpeed;
         if (playerLight.pointLightOuterRadius <= 0) {
