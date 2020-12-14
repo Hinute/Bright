@@ -117,10 +117,7 @@ public class Player : MonoBehaviour {
 
         if (gameObjectName.Contains("Food")) {
             eatFood(other);
-        } else if (gameObjectName.Contains("enemy")) {
-            damagePlayer();
-            Destroy(other.gameObject);
-        }
+        } 
     }
     void OnCollisionEnter2D(Collision2D collision) {
         GameObject gameObjectObstruction = collision.gameObject;
@@ -134,14 +131,19 @@ public class Player : MonoBehaviour {
     void OnCollisionStay2D(Collision2D collision) {
         GameObject gameObjectObstruction = collision.gameObject;
         Debug.Log("STAYED COLLIDED Player: " + gameObjectObstruction.ToString());
+        string gameObjectName = collision.gameObject.ToString();
 
         if (gameObjectObstruction.tag == "World") {
             hitWall();
+        } else if (gameObjectName.Contains("Enemy")) {
+            Debug.Log("Enemy collision");
+            damagePlayer();
+            Destroy(collision.gameObject);
         }
     }
 
     void damagePlayer(){
-        playerLight.pointLightOuterRadius -= .5f;
+        playerLight.pointLightOuterRadius -= .2f;
     }
     void setDeathFlag() {
         Debug.Log("DEATH");
