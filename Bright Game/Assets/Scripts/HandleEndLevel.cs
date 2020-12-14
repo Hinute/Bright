@@ -5,13 +5,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class HandleDeath : MonoBehaviour {
+public class HandleEndLevel : MonoBehaviour {
 
     public GameObject deathScreen;
+    public GameObject winScreen;
     public Text maxSize;
     private bool updated = false;
     // Start is called before the first frame update
     void Start() {
+        winScreen.SetActive(false);
         deathScreen.SetActive(false);
         Player.isDead = false;
         updated = false;
@@ -22,10 +24,13 @@ public class HandleDeath : MonoBehaviour {
     void Update() {
         if (Player.isDead && !updated) {
             killPlayer();
+        } else if (LevelCompletion.levelCompleted && !updated) {
+            showWinScreen();
         }
     }
 
     public void ReturnToMainMenu() {
+        Player.isWon = false;
         deathScreen.SetActive(false);
         AudioManager.instance.PlaySound("Select");
         SceneManager.LoadScene("Bright-MainMenu");
@@ -44,6 +49,21 @@ public class HandleDeath : MonoBehaviour {
         deathScreen.SetActive(true);
         maxSize.text += " " + PlayerPrefs.GetInt("MaxSize", 100);
         updated = true;
+    }
+
+    void showWinScreen(){
+        Debug.Log("SHOW WIN SCREEN");
+        Time.timeScale = 0;
+        winScreen.SetActive(true);
+        updated = true;
+        
+    }
+
+    public void nextLevel(){
+        Player.isWon = false;
+        updated = false;
+        winScreen.SetActive(false);
+        // SceneManager.LoadScene(); TODO Add next scene here!
     }
 
 }

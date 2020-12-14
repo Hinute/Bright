@@ -16,6 +16,7 @@ public class Player : MonoBehaviour {
     public static bool isDead = false;
     private float baseDecreaseSpeed = .0025f;
     public int targetFrameRate = 120;
+    public static bool isWon = false;
     
     void Awake() {
         PlayerPrefs.SetInt("MaxSize", 0);
@@ -26,6 +27,8 @@ public class Player : MonoBehaviour {
     }
 
     void Start(){
+        Debug.Log("Start ran");
+        isWon = false;
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = targetFrameRate;
     }
@@ -36,9 +39,13 @@ public class Player : MonoBehaviour {
             QualitySettings.vSyncCount = 0;
             Application.targetFrameRate = targetFrameRate;
         }
-        if (!PauseMenu.isPaused && !isDead) {
+        if (!PauseMenu.isPaused && !isDead && !isWon) {
             float currentLightRadius = playerLight.pointLightOuterRadius;
             int currentScore = (int)(currentLightRadius * 100);
+            LevelCompletion.instance.setLevelCompletion((float)(playerLight.pointLightOuterRadius/3));
+            if (currentLightRadius >= 3f){
+                isWon = true;
+            }
             maybeSaveNewMaxScore(currentScore);
             checkMovement();
             maybeIncreasePlayerLight(currentLightRadius);

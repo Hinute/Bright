@@ -39,7 +39,7 @@ public class FoodController : MonoBehaviour {
     }
 
     void Update() {
-        if (!PauseMenu.isPaused && !Player.isDead) {
+        if (!PauseMenu.isPaused && !Player.isDead && !Player.isWon) {
             for (int i = 0; i < cloneFoods.Count; i++) {
                 foodLight = cloneFoods[i].GetComponentInChildren<Light2D>();
                 foodLight.pointLightOuterRadius -= .0015f;
