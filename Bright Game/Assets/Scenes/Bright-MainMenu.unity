@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2480,13 +2480,13 @@ PrefabInstance:
     - target: {fileID: 7318170018646723853, guid: 21b4dc87cd5d243e8a45d33f42470147,
         type: 3}
       propertyPath: playlist.Array.data[2].name
-      value: Crystals
+      value: Upbeat2
       objectReference: {fileID: 0}
     - target: {fileID: 7318170018646723853, guid: 21b4dc87cd5d243e8a45d33f42470147,
         type: 3}
       propertyPath: playlist.Array.data[2].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 05f5639589687d34e906556b0d41c10f, type: 3}
+      objectReference: {fileID: 8300000, guid: b588f39e5156f124ba000ef0bd03859d, type: 3}
     - target: {fileID: 7318170018646723853, guid: 21b4dc87cd5d243e8a45d33f42470147,
         type: 3}
       propertyPath: playlist.Array.data[2].volume
@@ -2727,17 +2727,17 @@ PrefabInstance:
     - target: {fileID: 1408362842192468729, guid: 51c0b511ab18044a4847a5ee703cf6ef,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 427
+      value: 360
       objectReference: {fileID: 0}
     - target: {fileID: 1408362842192468729, guid: 51c0b511ab18044a4847a5ee703cf6ef,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 79
+      value: 67
       objectReference: {fileID: 0}
     - target: {fileID: 1408362842192468729, guid: 51c0b511ab18044a4847a5ee703cf6ef,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 17
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1408362842192468729, guid: 51c0b511ab18044a4847a5ee703cf6ef,
         type: 3}
@@ -2750,14 +2750,14 @@ PrefabInstance:
       value: "You control a small point of light.  You are weak, and your light is
         running out! Grow your brightness by absorbing other points of light that
         spawn on the map. You will take on some of the other lights' hue.\n\nNot
-        Implemented Yet:\n- gain powerups depending on the hue\n- shadow enemies
-        that absorb your bright\n- dead lights will give you debuffs\n- levels and
-        win criteria\n\nControls: \n- Movement: Arrow Keys\n- Pause/Exit: Esc Key"
+        Implemented Yet:\n- gain powerups depending on the hue\n- dead lights will
+        give you debuffs\n\nControls: \n- Movement: Arrow Keys\n- Pause/Exit: Esc
+        Key"
       objectReference: {fileID: 0}
     - target: {fileID: 1408362842192468729, guid: 51c0b511ab18044a4847a5ee703cf6ef,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 81
+      value: 69
       objectReference: {fileID: 0}
     - target: {fileID: 1408362842192468729, guid: 51c0b511ab18044a4847a5ee703cf6ef,
         type: 3}
