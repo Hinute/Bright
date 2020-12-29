@@ -51,14 +51,14 @@ public class AudioManager : MonoBehaviour {
         }
     }
 
-    private Sound FindAudioByName(Sound[] audioList, string name) {
+    public Sound FindAudioByName(string name, Sound[] audioList) {
         return Array.Find(audioList, audio => audio.name == name);
     }
     public void PlaySound(string name) {
         // here we get the Sound from our array with the name passed in the methods parameters
         Debug.Log("AudioManager: Trying to play sound: " + name);
 
-        Sound s = FindAudioByName(sounds, name);
+        Sound s = FindAudioByName(name, sounds);
         if (!s.valid) {
             Debug.LogError("Unable to play sound " + name);
             return;
@@ -76,7 +76,7 @@ public class AudioManager : MonoBehaviour {
                 // start at the beginning of the playlist
                 currentPlayingIndex = 0;
             } else {
-                Sound music = FindAudioByName(playlist, musicName);
+                Sound music = FindAudioByName(musicName, playlist);
                 if (!music.valid) {
                     Debug.LogError("Unable to play music " + musicName);
                     NextIndex();
@@ -141,7 +141,7 @@ public class AudioManager : MonoBehaviour {
                 if (playlist[currentPlayingIndex].loopToAudio == "") {
                     NextIndex();
                 } else {
-                    Sound music = FindAudioByName(playlist, playlist[currentPlayingIndex].loopToAudio);
+                    Sound music = FindAudioByName(playlist[currentPlayingIndex].loopToAudio, playlist);
                     if (!music.valid) {
                         Debug.LogError("Unable to play music " + playlist[currentPlayingIndex].loopToAudio);
                         NextIndex();
@@ -164,7 +164,7 @@ public class AudioManager : MonoBehaviour {
     // if the music volume change update all the audio sources
     public void musicVolumeChanged() {
         foreach (Sound m in playlist) {
-            mvol = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
+            mvol = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
             m.source.volume = playlist[0].volume * mvol;
         }
     }
@@ -175,6 +175,6 @@ public class AudioManager : MonoBehaviour {
         foreach (Sound s in sounds) {
             s.source.volume = s.volume * evol;
         }
-        sounds[0].source.Play(); // play an effect so user can her effect volume
+        PlaySound("Select"); // play an effect so user can her effect volume
     }
 }

@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - AudioManager
+  - ShowOnPause
+  - World
+  - WorldEdge
   layers:
   - Default
   - TransparentFX
@@ -13,8 +17,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - PostProcessing
+  - Player
   - 
   - 
   - 
@@ -41,12 +45,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: background
-    uniqueID: 3121212189
+  - name: back
+    uniqueID: 4283873199
     locked: 0
-  - name: foreground
-    uniqueID: 735806363
+  - name: mid
+    uniqueID: 1927744721
     locked: 0
-  - name: middleground
-    uniqueID: 3516187329
+  - name: fore
+    uniqueID: 1020044273
     locked: 0

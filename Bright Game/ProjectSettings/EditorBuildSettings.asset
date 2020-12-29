@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Bright-Level 0.unity
     guid: b3dc9de6f00d34bdda5ba7df490e02e5
+  - enabled: 1
+    path: Assets/Scenes/Em2.unity
+    guid: 4ab86fd9f6c05cd4fabc241f69ab7f20
   m_configObjects: {}
